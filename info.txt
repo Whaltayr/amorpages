@@ -1,0 +1,26 @@
+amorpages/
+├─ .github/
+│ └─ workflows/
+│ └─ deploy.yml
+├─ clients/
+│ ├─ c-0214-ana-joao/
+│ │ └─ index.html
+│ └─ c-0214-maria-pedro/
+│ └─ index.html
+├─ public/
+│ └─ assets/
+├─ src/
+│ ├─ components/
+│ │ ├─ Hero.jsx
+│ │ ├─ PriceCard.jsx
+│ │ └─ WhatsAppButton.jsx
+│ ├─ pages/
+│ │ └─ Home.jsx
+│ ├─ App.jsx
+│ ├─ main.jsx
+│ └─ index.css
+├─ tailwind.config.cjs
+├─ vite.config.js
+├─ package.json
+├─ README.md
+└─ .gitignore
