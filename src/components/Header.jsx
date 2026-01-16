@@ -7,7 +7,7 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="/" className="flex items-center gap-3">
      
-          <span className="text-lg font-semibold text-transparent bg-clip-text bg-linear-to-r from-grad1 to-grad2">AmorPages</span>
+          <span className="text-lg font-semibold text-transparent bg-clip-text bg-linear-to-r from-grad1 to-grad2">LoveLive</span>
         </a>
 
         <nav className="hidden lg:flex items-center gap-6 text-sm">
