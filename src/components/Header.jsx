@@ -19,7 +19,7 @@ export default function Header() {
 
         <div className="flex items-center gap-3">
           <a href="https://wa.me/258XXXXXXXXX?text=Ol%C3%A1%2C%20quero%20encomendar" target="_blank" rel="noopener noreferrer"
-             className="hidden md:inline-block px-4 py-2 bg-linear-to-r from-grad-cta1 to-grad-cta2 text-white rounded-[30px] text-sm font-medium">
+             className="hidden md:inline-flex gap-2 items-center px-4 py-2 bg-linear-to-r from-grad-cta1 to-grad-cta2 text-white rounded-[30px] text-sm font-medium">
             <span>Falar no Whatsapp </span>
             <img src={WhatsappIcon} alt="whatsappicon" className='w-4 h-4' />
           </a>
