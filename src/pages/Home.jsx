@@ -4,6 +4,7 @@ import HowItWorks from "../components/HowItWorks";
 import PricingSection from "../components/PriceCardSection";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/Faq";
+import Footer from "../components/Footer";
 
 export default function Home(){
     return(
@@ -14,6 +15,7 @@ export default function Home(){
         <PricingSection/>
         <Testimonials/>
         <FAQ/>
+        <Footer/>
         </>
     )
 }

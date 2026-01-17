@@ -35,7 +35,7 @@ export default function Hero(){
                 </div>
 
                 {/* Lado da Imagem: Aparece primeiro no mobile (opcional) */}
-                <div className="flex-1 order-1 md:order-2 w-full max-w-[300px] md:max-w-none">
+                <div className="flex-1 order-1 md:order-2 w-full max-w-75 md:max-w-none">
                     <img 
                         src={HeroImage} 
                         alt="Preview do site de namoro" 
