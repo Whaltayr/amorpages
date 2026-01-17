@@ -56,8 +56,8 @@ export default function PricingSection() {
           <h2 className="font-montserrat text-3xl font-bold text-center mb-4 text-white-1">
             Escolha o presente ideal
           </h2>
-          <p className="text-center text-white-1/85 max-w-2xl mx-auto mb-8">
-            Do simples e romântico ao exclusivo — um pacote para cada história.
+          <p className="text-center text-2xl text-white-1/85 max-w-2xl mx-auto mb-8">
+            Do simples e romântico ao exclusivo um pacote para cada história.
           </p>
         </div>
 

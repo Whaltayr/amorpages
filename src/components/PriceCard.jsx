@@ -32,7 +32,7 @@ export default function PriceCard({
   return (
     <article
       // 2. USE THE borderColor VARIABLE HERE
-      className={`max-w-67 group relative rounded-3xl p-6 shadow-sm transition-transform transform flex flex-col h-full border ${
+      className={`max-w-67 group relative rounded-3xl p-6 shadow-sm hover:-translate-y-3 transition-transform transform flex flex-col h-full border ${
         highlighted ? "md:scale-105 z-10" : ""
       } ${borderColor}`}
       aria-labelledby={`price-${slug}`}

@@ -24,7 +24,7 @@ export default function HowItWorks() {
     <section id="how" className="py-40 bg-linear-120 from-gr-h1 to-gr-h2">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-6">Como funciona</h2>
-        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-8">
+        <p className="text-center text-gray-600 text-2xl max-w-2xl mx-auto mb-8">
           Rápido, claro e sem complicações criamos a página, você aprova e
           partilha.
         </p>
