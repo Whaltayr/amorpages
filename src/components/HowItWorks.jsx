@@ -12,7 +12,7 @@ function Step({ icon, number, title, children }) {
       >
         <img src={icon} alt="" className="w-8 h-" />
       </div>
-      <div className="text-grad-cta1 font-semibold mb-1">Passo {number}</div>
+      <div className="text-grad-cta2 font-semibold mb-1 ">Passo {number}</div>
       <h3 className="font-semibold text-lg mb-2">{title}</h3>
       <p className="text-sm text-gray-600">{children}</p>
     </div>
@@ -21,7 +21,7 @@ function Step({ icon, number, title, children }) {
 
 export default function HowItWorks() {
   return (
-    <section id="how" className="py-16 bg-linear-120 from-gr-h1 to-gr-h2">
+    <section id="how" className="py-40 bg-linear-120 from-gr-h1 to-gr-h2">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-6">Como funciona</h2>
         <p className="text-center text-gray-600 max-w-2xl mx-auto mb-8">

@@ -49,32 +49,35 @@ export default function PricingSection() {
   ];
 
   return (
-    <section id="pacotes" className="py-16 bg-dark">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-4">
-          Escolha o presente ideal
-        </h2>
-        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-8">
-          Do simples e romântico ao exclusivo — um pacote para cada história.
-        </p>
+    <section id="pacotes" className=" py-40 bg-dark">
+      <div className="flex flex-col gap-10 max-w-6xl mx-auto  px-6">
 
-        <div className="grid gap-6 md:grid-cols-3 items-stretch ">
+        <div className="flex flex-col ">
+          <h2 className="font-montserrat text-3xl font-bold text-center mb-4 text-white-1">
+            Escolha o presente ideal
+          </h2>
+          <p className="text-center text-white-1/85 max-w-2xl mx-auto mb-8">
+            Do simples e romântico ao exclusivo — um pacote para cada história.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3 items-stretch justify-center">
           {packs.map((p) => (
-            <div key={p.slug} className="flex">
+            <div key={p.slug} className="flex justify-center h-full">
               <PriceCard {...p} />
             </div>
           ))}
         </div>
 
         {/* métodos de pagamento */}
-        <div className="mt-20 flex flex-col md:flex-row items-center justify-between gap-4 bg-gray-50/20 border border-white-1/30 p-4  rounded-4xl ">
+        <div className="mt-20 flex flex-col md:flex-row items-center justify-between gap-4 bg-gray-50/20 border border-white-1/30 p-4  rounded-4xl font-inter">
           <div className="flex items-center gap-4">
-            <span className="font-semibold">Aceitamos:</span>
-            <p>Multicaixa Express</p>
-            <p>Transferencia Bancaria</p>
+            <span className="font-semibold text-white-1">Aceitamos:</span>
+            <p className="text-white-1/90">Multicaixa Express</p>
+            <p className="text-white-1/90">Transferencia Bancaria</p>
           </div>
 
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-white-1/80">
             Pagamentos por transferência, Multicaixa ou confirmação via
             WhatsApp.
           </div>
