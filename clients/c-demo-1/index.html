@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rosa Romântico — Demo</title>
+  <meta name="description" content="Demo — Rosa Romântico. Carta, galeria e trilha sonora.">
+  <!-- Para um protótipo estático, apontar para o CSS gerado: -->
+  <link rel="stylesheet" href="/clients/assets/tailwind.css">
+</head>
+<body class="bg-white text-slate-900 antialiased font-sans">
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center justify-center px-6 py-16 bg-gradient-to-b from-pink-50">
+    <div class="max-w-3xl text-center">
+      <div class="mx-auto mb-8 w-56 h-56 rounded-full overflow-hidden ring-4 ring-pink-100 shadow-xl">
+        <img src="./assets/hero.webp" alt="Casal" class="w-full h-full object-cover">
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-extrabold text-grad-cta1">Ana <span class="text-amber-400">&amp;</span> João</h1>
+      <p class="mt-4 text-gray-700">Uma história que começou em <strong>14 Fevereiro 2020</strong>. Hoje celebramos cada momento.</p>
+
+      <div class="mt-6 flex items-center justify-center gap-3">
+        <a href="https://wa.me/258XXXXXXXXX?text=Ol%C3%A1%21%20Quero%20este%20template%20Rosa%20Rom%C3%A2ntico" class="px-4 py-2 bg-grad-cta1 text-white rounded-md">Encomendar</a>
+        <a href="#message" class="px-4 py-2 border border-grad-cta1 text-grad-cta1 rounded-md">Ver mensagem</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Message -->
+  <section id="message" class="py-16 px-6 bg-white">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl font-semibold text-grad-cta1 mb-4">Mensagem Especial</h2>
+      <blockquote class="text-xl text-gray-800 italic">"Cada dia contigo é um capítulo que eu guardo no peito — obrigado por seres a minha calma e a minha festa."</blockquote>
+      <div class="mt-4 text-amber-400">— João</div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="py-16 px-6 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <h3 class="text-2xl font-semibold text-center mb-6">Nossos Momentos</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <img src="./assets/gallery-01.webp" alt="Momento 1" class="w-full aspect-square object-cover rounded-lg cursor-pointer photo-hover" loading="lazy">
+        <img src="./assets/gallery-02.webp" alt="Momento 2" class="w-full aspect-square object-cover rounded-lg cursor-pointer photo-hover" loading="lazy">
+        <img src="./assets/gallery-03.webp" alt="Momento 3" class="w-full aspect-square object-cover rounded-lg cursor-pointer photo-hover" loading="lazy">
+        <img src="./assets/gallery-04.webp" alt="Momento 4" class="w-full aspect-square object-cover rounded-lg cursor-pointer photo-hover" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Music -->
+  <section class="py-12 px-6 bg-grad-cta1">
+    <div class="max-w-xl mx-auto text-center text-white">
+      <h3 class="text-xl font-semibold mb-4">Nossa Música</h3>
+      <div class="bg-white/10 rounded-xl p-4">
+        <iframe title="Spotify" src="https://open.spotify.com/embed/track/3d9DChrdc6BOeFsbrZ3Is0" width="100%" height="80" frameborder="0" allow="encrypted-media" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Letter -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <h3 class="text-2xl font-semibold text-center mb-6">Carta de Amor</h3>
+      <div class="bg-pink-50 rounded-2xl p-6 border border-pink-100">
+        <p class="text-gray-700 leading-relaxed whitespace-pre-line">
+          Meu amor,
+          
+          Cada dia contigo revela um pequeno milagre. Obrigado por partilhares a vida comigo.
+        </p>
+
+        <div class="mt-6 text-right">
+          <div class="text-sm text-amber-400">Com amor,</div>
+          <div class="font-semibold text-grad-cta1">João</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 bg-slate-900 text-center text-white">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-xl font-semibold">Ana &amp; João</div>
+      <div class="text-sm mt-1 text-white/60">Dia dos Namorados 2026</div>
+    </div>
+  </footer>
+
+  <!-- Lightbox script -->
+  <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4" onclick="closeLightbox(event)">
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg">
+  </div>
+
+  <script>
+    document.querySelectorAll('.photo-hover').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        const img = e.currentTarget;
+        document.getElementById('lightbox-img').src = img.src.replace('/gallery-','/gallery-'); // placeholder
+        document.getElementById('lightbox').classList.remove('hidden');
+        document.getElementById('lightbox').classList.add('flex');
+      });
+    });
+    function closeLightbox(e) {
+      if (e.target.id === 'lightbox' || e.target.id === 'lightbox-img') {
+        document.getElementById('lightbox').classList.add('hidden');
+        document.getElementById('lightbox').classList.remove('flex');
+      }
+    }
+  </script>
+</body>
+</html>
