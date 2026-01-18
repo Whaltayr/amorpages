@@ -1,110 +1,223 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Rosa Romântico — Demo</title>
   <meta name="description" content="Demo — Rosa Romântico. Carta, galeria e trilha sonora.">
-  <!-- Para um protótipo estático, apontar para o CSS gerado: -->
-  <link rel="stylesheet" href="/clients/assets/tailwind.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              grad1: '#B8326A',
+              grad2: '#FF5A5F',
+              cta1: '#FF5A5F',
+              cta2: '#C1839F',
+              dark: '#12100E',
+              cream: '#F4F5F0',
+              diamond: '#2e86ab',
+              brown: '#4A2F2F',
+              soft: '#8F6B64',
+            }
+          },
+          fontFamily: {
+            montserrat: ['Montserrat', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilos personalizados apenas para animações e detalhes finos */
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    
+    .photo-hover { transition: all 0.3s ease; }
+    .photo-hover:hover { transform: scale(1.02); filter: brightness(0.9); cursor: zoom-in; }
+  </style>
 </head>
-<body class="bg-white text-slate-900 antialiased font-sans">
-  <!-- Hero -->
-  <section class="min-h-screen flex items-center justify-center px-6 py-16 bg-gradient-to-b from-pink-50">
-    <div class="max-w-3xl text-center">
-      <div class="mx-auto mb-8 w-56 h-56 rounded-full overflow-hidden ring-4 ring-pink-100 shadow-xl">
-        <img src="./assets/hero.webp" alt="Casal" class="w-full h-full object-cover">
+
+<body class="antialiased bg-brand-cream text-brand-dark font-inter selection:bg-brand-grad2 selection:text-white">
+
+  <section class="min-h-screen flex flex-col items-center justify-center relative px-4 py-12 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-grad2/10 to-transparent pointer-events-none"></div>
+
+    <div class="relative z-10 text-center max-w-3xl w-full animate-float">
+      
+      <div class="relative inline-block mb-10 group">
+        <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-[6px] border-white/40 shadow-2xl mx-auto transform transition-transform duration-500 hover:rotate-2">
+          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=600&auto=format&fit=crop" alt="Casal" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full text-sm font-bold shadow-lg bg-gradient-to-r from-brand-cta1 to-brand-cta2 text-white whitespace-nowrap z-20">
+          1.250 dias juntos
+        </div>
       </div>
 
-      <h1 class="text-4xl md:text-5xl font-extrabold text-grad-cta1">Ana <span class="text-amber-400">&amp;</span> João</h1>
-      <p class="mt-4 text-gray-700">Uma história que começou em <strong>14 Fevereiro 2020</strong>. Hoje celebramos cada momento.</p>
+      <h1 class="font-montserrat font-bold text-brand-brown text-5xl md:text-7xl tracking-tight leading-tight mb-6">
+        Ana <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cta1 to-brand-cta2">&</span> João
+      </h1>
 
-      <div class="mt-6 flex items-center justify-center gap-3">
-        <a href="https://wa.me/258XXXXXXXXX?text=Ol%C3%A1%21%20Quero%20este%20template%20Rosa%20Rom%C3%A2ntico" class="px-4 py-2 bg-grad-cta1 text-white rounded-md">Encomendar</a>
-        <a href="#message" class="px-4 py-2 border border-grad-cta1 text-grad-cta1 rounded-md">Ver mensagem</a>
+      <div class="w-24 h-0.5 bg-gradient-to-r from-brand-cta1 to-brand-cta2 mx-auto mb-6"></div>
+
+      <p class="text-brand-soft text-lg md:text-xl font-light">
+        Uma história que começou em <br class="md:hidden">
+        <span class="font-semibold text-brand-brown">14 Fevereiro 2020</span>
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://wa.me/258XXXXXXXXX" target="_blank" 
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full shadow-lg shadow-brand-cta1/30 bg-gradient-to-r from-brand-cta1 to-brand-cta2 text-white font-semibold hover:opacity-90 transition-opacity transform active:scale-95">
+         <img src="assets/whatsapp-white.svg" class="h-4" alt="">
+          Encomendar
+        </a>
+
+        <a href="#message" class="w-full sm:w-auto px-6 py-3.5 border border-brand-brown/20 text-brand-soft rounded-full font-medium hover:bg-brand-brown/5 transition-colors text-center">
+          Ler mensagem
+        </a>
       </div>
+    </div>
+
+    <div class="absolute bottom-8 animate-bounce text-brand-brown/30">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
     </div>
   </section>
 
-  <!-- Message -->
-  <section id="message" class="py-16 px-6 bg-white">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-2xl font-semibold text-grad-cta1 mb-4">Mensagem Especial</h2>
-      <blockquote class="text-xl text-gray-800 italic">"Cada dia contigo é um capítulo que eu guardo no peito — obrigado por seres a minha calma e a minha festa."</blockquote>
-      <div class="mt-4 text-amber-400">— João</div>
+  <section id="message" class="py-24 px-6 bg-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="text-brand-grad1 text-4xl block mb-2 font-serif">❧</span>
+      <h2 class="font-montserrat text-3xl md:text-4xl text-brand-brown font-bold mb-8">Mensagem Especial</h2>
+
+      <blockquote class="text-xl md:text-3xl text-brand-brown/90 leading-relaxed italic font-light">
+        "Cada dia contigo é um capítulo que eu guardo no peito — obrigado por seres a minha calma e a minha festa."
+      </blockquote>
+
+      <div class="mt-8 text-brand-grad2 font-semibold tracking-wide uppercase text-sm">— De João para Ana</div>
     </div>
   </section>
 
-  <!-- Gallery -->
-  <section class="py-16 px-6 bg-gray-50">
-    <div class="max-w-5xl mx-auto">
-      <h3 class="text-2xl font-semibold text-center mb-6">Nossos Momentos</h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <img src="./assets/gallery-01.webp" alt="Momento 1" class="w-full aspect-square object-cover rounded-lg cursor-pointer photo-hover" loading="lazy">
-        <img src="./assets/gallery-02.webp" alt="Momento 2" class="w-full aspect-square object-cover rounded-lg cursor-pointer photo-hover" loading="lazy">
-        <img src="./assets/gallery-03.webp" alt="Momento 3" class="w-full aspect-square object-cover rounded-lg cursor-pointer photo-hover" loading="lazy">
-        <img src="./assets/gallery-04.webp" alt="Momento 4" class="w-full aspect-square object-cover rounded-lg cursor-pointer photo-hover" loading="lazy">
+  <section class="py-20 px-4 md:px-8 bg-brand-cream border-y border-brand-brown/5">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-montserrat text-2xl md:text-3xl text-brand-soft font-bold">Nossos Momentos</h2>
+        <div class="w-16 h-0.5 bg-gradient-to-r from-brand-cta1 to-brand-cta2 mx-auto mt-4"></div>
       </div>
-    </div>
-  </section>
 
-  <!-- Music -->
-  <section class="py-12 px-6 bg-grad-cta1">
-    <div class="max-w-xl mx-auto text-center text-white">
-      <h3 class="text-xl font-semibold mb-4">Nossa Música</h3>
-      <div class="bg-white/10 rounded-xl p-4">
-        <iframe title="Spotify" src="https://open.spotify.com/embed/track/3d9DChrdc6BOeFsbrZ3Is0" width="100%" height="80" frameborder="0" allow="encrypted-media" loading="lazy"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- Letter -->
-  <section class="py-16 px-6 bg-white">
-    <div class="max-w-2xl mx-auto">
-      <h3 class="text-2xl font-semibold text-center mb-6">Carta de Amor</h3>
-      <div class="bg-pink-50 rounded-2xl p-6 border border-pink-100">
-        <p class="text-gray-700 leading-relaxed whitespace-pre-line">
-          Meu amor,
-          
-          Cada dia contigo revela um pequeno milagre. Obrigado por partilhares a vida comigo.
-        </p>
-
-        <div class="mt-6 text-right">
-          <div class="text-sm text-amber-400">Com amor,</div>
-          <div class="font-semibold text-grad-cta1">João</div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="photo-hover rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-200 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600&auto=format&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-hover rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-200 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=600&auto=format&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-hover rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-200 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-hover rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-200 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1621112904887-419379ce6824?q=80&w=600&auto=format&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1621112904887-419379ce6824?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-8 px-6 bg-slate-900 text-center text-white">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-xl font-semibold">Ana &amp; João</div>
-      <div class="text-sm mt-1 text-white/60">Dia dos Namorados 2026</div>
+  <section class="py-16 px-4 bg-gradient-to-r from-brand-grad1 to-brand-grad2 text-white">
+    <div class="max-w-lg mx-auto text-center">
+      <h2 class="text-2xl font-montserrat font-bold mb-6 flex items-center justify-center gap-2">
+        <svg class="w-6 h-6 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        Nossa Música
+      </h2>
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 shadow-xl border border-white/20">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-6 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="font-montserrat text-3xl font-bold text-brand-brown">Carta de Amor</h2>
+        <div class="w-16 h-0.5 bg-gradient-to-r from-brand-cta1 to-brand-cta2 mx-auto mt-4"></div>
+      </div>
+
+      <div class="bg-brand-cream rounded-3xl p-8 md:p-12 border border-brand-brown/10 shadow-sm relative">
+        <div class="absolute top-4 left-6 text-6xl text-brand-brown/10 font-serif leading-none">“</div>
+
+        <p class="text-brand-brown font-montserrat font-bold text-lg mb-6">Meu amor,</p>
+
+        <p class="text-brand-brown/80 leading-relaxed whitespace-pre-line text-lg">
+          Cada dia contigo revela um pequeno milagre. Obrigado por partilhares a vida comigo. 
+          
+          Que venham mais conversas no sofá, viagens inesperadas e cafés às sete. Prometo estar lá em cada nascer do sol.
+        </p>
+
+        <div class="mt-12 text-right border-t border-brand-brown/10 pt-6">
+          <p class="text-brand-grad2 text-sm font-semibold mb-1">Com todo meu amor,</p>
+          <p class="font-montserrat text-2xl text-brand-brown font-bold">João</p>
+          <p class="text-brand-brown/40 text-xs mt-1 uppercase tracking-widest">14 Fevereiro 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-12 px-4 bg-gray-900 text-white text-center">
+    <div class="max-w-3xl mx-auto flex flex-col items-center gap-4">
+      <div class="text-2xl font-montserrat font-bold">Ana <span class="text-brand-cta1">&</span> João</div>
+      <div class="text-sm text-gray-500">Feito com ❤ para o Dia dos Namorados 2026</div>
     </div>
   </footer>
 
-  <!-- Lightbox script -->
-  <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4" onclick="closeLightbox(event)">
-    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg">
+  <div id="lightbox" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0" onclick="closeLightbox()">
+    <button class="absolute top-6 right-6 text-white/70 hover:text-white p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="Zoom" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl transform scale-95 transition-transform duration-300">
   </div>
 
   <script>
-    document.querySelectorAll('.photo-hover').forEach((el) => {
-      el.addEventListener('click', (e) => {
-        const img = e.currentTarget;
-        document.getElementById('lightbox-img').src = img.src.replace('/gallery-','/gallery-'); // placeholder
-        document.getElementById('lightbox').classList.remove('hidden');
-        document.getElementById('lightbox').classList.add('flex');
-      });
-    });
-    function closeLightbox(e) {
-      if (e.target.id === 'lightbox' || e.target.id === 'lightbox-img') {
-        document.getElementById('lightbox').classList.add('hidden');
-        document.getElementById('lightbox').classList.remove('flex');
-      }
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.remove('hidden');
+      // Pequeno delay para permitir a animação de opacidade
+      setTimeout(() => {
+        lightbox.classList.remove('opacity-0');
+        lightboxImg.classList.remove('scale-95');
+        lightboxImg.classList.add('scale-100');
+      }, 10);
     }
+
+    function closeLightbox() {
+      lightbox.classList.add('opacity-0');
+      lightboxImg.classList.remove('scale-100');
+      lightboxImg.classList.add('scale-95');
+      
+      setTimeout(() => {
+        lightbox.classList.add('hidden');
+        lightboxImg.src = '';
+      }, 300); // Tempo igual a transition-duration
+    }
+    
+    // Fechar com ESC
+    document.addEventListener('keydown', function(event){
+        if(event.key === "Escape"){
+            closeLightbox();
+        }
+    });
   </script>
 </body>
 </html>
