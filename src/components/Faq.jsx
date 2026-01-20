@@ -29,7 +29,7 @@ export default function FAQ() {
   const toggle = (i) => setOpen(open === i ? null : i)
 
   return (
-    <section id="faq" className="py-16 bg-white">
+    <section id="faq" className="py-16 bg-gr-h1">
       <div className="max-w-5xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-4 font-montserrat">Perguntas frequentes</h2>
         <p className="text-center text-gray-600 mb-8 font-montserrat">Respostas diretas para dúvidas comuns se faltar algo, responde no WhatsApp.</p>

@@ -1,17 +1,20 @@
 import React from 'react'
+import whatIcon from '../assets/icon/whatsapp-white.svg'
+import BankIcon from '../assets/icon/bank.svg'
+import CardIcon from '../assets/icon/card.svg'
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-200 mt-12">
+    <footer className="bg-slate-900 text-slate-200 ">
       <div className="max-w-6xl mx-auto px-6 py-10 grid gap-8 md:grid-cols-3">
         {/* Brand */}
         <div>
           <a href="/" className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-white font-bold">A</div>
-            <span className="text-lg font-semibold">AmorPages</span>
+          
+            <span className="text-lg font-semibold text-grad2">LoveLive</span>
           </a>
           <p className="text-sm text-slate-300 max-w-xs">
-            Cartões digitais personalizados para o Dia dos Namorados — rápidos, íntimos e fáceis de partilhar.
+            Cartões digitais personalizados para o Dia dos Namorados rápidos, íntimos e fáceis de partilhar.
           </p>
 
           <div className="mt-4 flex items-center gap-3">
@@ -19,12 +22,9 @@ export default function Footer() {
               href="https://wa.me/258XXXXXXXXX?text=Ol%C3%A1%2C%20quero%20saber%20mais"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3 py-2 bg-pink-600 text-white rounded"
+              className="inline-flex items-center gap-2 px-3 py-2 bg-grad-cta1 text-white rounded"
             >
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden>
-                <path d="M21 11.5a9 9 0 1 1-4.5-7.8L21 2v9.5z" fill="currentColor" opacity="0.12"></path>
-                <path d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.273-.099-.472-.148-.672.149-.198.297-.768.967-.942 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.787-1.48-1.77-1.653-2.068-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.521.149-.173.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.672-1.62-.92-2.221-.242-.58-.487-.5-.672-.51l-.573-.01c-.198 0-.52.074-.793.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487 0 0 .262.11.47.11.198 0 .32-.074.445-.12.132-.047 1.758-.717 2.006-1.413.248-.696.248-1.292.173-1.414-.074-.124-.272-.198-.57-.347z" fill="currentColor"></path>
-              </svg>
+         <img src={whatIcon} className='h-4' alt="" />
               WhatsApp
             </a>
             <a href="#faq" className="text-sm text-slate-300 underline underline-offset-2">FAQ</a>
@@ -47,13 +47,13 @@ export default function Footer() {
           <h4 className="font-semibold text-slate-100 mb-3">Pagamento & contato</h4>
 
           <div className="flex items-center gap-3 mb-3">
-            <img src="/src/assets/icons/multicaixa.svg" alt="Multicaixa" className="h-6" />
-            <img src="/src/assets/icons/visa.svg" alt="Visa" className="h-6" />
+            <h3 className='flex gap-2 items-center'>Multicaixa Express <img src={CardIcon} className="h-4" alt="" /></h3>
+            <h3 className='flex gap-2 items-center'>Tranferencia Bancaria <img src={BankIcon} className="h-4" alt="" /></h3>
            
           </div>
 
-          <p className="text-slate-300 mb-2">Email: josiwhatson@gmail.com<a href="mailto:josiwhatson@gmail.com" className="underline">josiwhatson@gmail.com</a></p>
-          <p className="text-slate-300">Telefone: 932783626<a href="tel:+244932783626" className="underline">+244 932783626</a></p>
+          <p className="text-slate-300 mb-2">Email: <a href="mailto:josiwhatson@gmail.com" className="underline">josiwhatson@gmail.com</a></p>
+          <p className="text-slate-300">Telefone: <a href="" className="underline">+244 932783626</a></p>
         </div>
       </div>
 
