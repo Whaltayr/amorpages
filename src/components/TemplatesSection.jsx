@@ -7,7 +7,7 @@ export default function TemplatesSection() {
     { title: 'Minimal Clean', subtitle: 'Design limpo e foco no texto.', thumb: '/clients/c-demo-2/thumb.webp', slug: 'c-demo-2', tag: 'Básico' },
     { title: 'Vintage', subtitle: 'Tons quentes e ornamentos clássicos.', thumb: '/clients/c-demo-3/thumb.webp', slug: 'c-demo-3', tag: 'Básico' },
     { title: 'Polaroid', subtitle: 'Galeria em mosaico, estilo instant.', thumb: '/clients/c-demo-4/thumb.webp', slug: 'c-demo-4', tag: 'Básico' },
-    { title: 'Storyline', subtitle: 'Linha do tempo visual e momentos-chave.', thumb: '/clients/c-demo-5/thumb.webp', slug: 'c-demo-5', tag: 'Básico' },
+    { title: 'Moonlight', subtitle: 'Linha do tempo visual e momentos-chave.', thumb: '/clients/c-demo-5/thumb.webp', slug: 'c-demo-5', tag: 'Básico' },
     { title: 'Premium – Cinematic', subtitle: 'Animações suaves e layout dinâmico.', thumb: '/clients/c-demo-premium/thumb.webp', slug: 'c-demo-premium', tag: 'Premium', highlighted: true },
     { title: 'Deluxe – Exclusivo', subtitle: 'Design personalizado e extras físicos.', thumb: '/clients/c-demo-deluxe/thumb.webp', slug: 'c-demo-deluxe', tag: 'Deluxe' }
   ]

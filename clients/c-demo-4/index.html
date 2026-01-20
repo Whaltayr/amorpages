@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="pt" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Polaroid — Demo</title>
+  <meta name="description" content="Polaroid — galeria em mosaico, estilo instant.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* ANIMAÇÕES DO CARD */
+    .photo-hover { transition: transform .28s ease, filter .28s ease, box-shadow .28s ease; }
+    .photo-hover:hover { 
+        transform: translateY(-6px) scale(1.02) rotate(1deg); /* Leve rotação para dar ar orgânico */
+        filter: brightness(1.02); 
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        cursor: zoom-in; 
+    }
+    
+    .polaroid { background: #fff; border-radius: 2px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    .polaroid-caption { font-family: 'Montserrat', cursive; font-weight:600; color: #444; letter-spacing: -0.5px; }
+
+    /* --- EFEITO DE RUÍDO (NOISE) --- */
+    .bg-noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; /* Importante: deixa o clique passar através do ruído */
+        z-index: 50;
+        opacity: 0.05; /* SUTIL: Ajuste aqui (0.03 a 0.08 é o ideal) */
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body class="antialiased bg-[#FBFAF7] text-[#2A2A2A] font-inter relative">
+
+  <div class="bg-noise"></div>
+
+  <main id="page" data-name-a="Ana" data-name-b="João" data-start="2020-02-14" data-spotify="3d9DChrdc6BOeFsbrZ3Is0">
+    
+    <section class="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
+      <div class="max-w-3xl w-full text-center">
+        <div class="mx-auto mb-8 p-3 bg-white shadow-lg rotate-[-2deg] inline-block transform transition hover:rotate-0 duration-500">
+            <div class="w-44 h-44 md:w-64 md:h-64 overflow-hidden border border-gray-100">
+                <img id="hero-img" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" alt="Casal" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+        </div>
+
+        <h1 id="hero-names" class="font-montserrat text-4xl md:text-6xl font-bold mb-3 tracking-tight text-[#2A2A2A]">
+          Ana <span class="text-[#C34A3A] text-3xl align-middle">&</span> João
+        </h1>
+
+        <div id="days" class="text-sm font-mono text-gray-500 mb-6 tracking-widest uppercase border-y border-gray-300 py-2 inline-block px-4">
+            — 1.234 dias juntos —
+        </div>
+
+        <p class="text-sm md:text-base text-gray-600 max-w-lg mx-auto leading-relaxed">
+            Galeria em mosaico com sensação instantânea: bordas brancas e momentos reais capturados no tempo.
+        </p>
+
+        <div class="flex items-center justify-center gap-4 mt-8">
+          <a id="wa-link" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#2A2A2A] text-white font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
+            Encomendar
+          </a>
+          <a href="#message" class="inline-block px-6 py-3 rounded-full border border-gray-300 text-gray-700 hover:bg-white hover:border-gray-400 transition-colors bg-[#FBFAF7]">
+            Ler mensagem
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="message" class="py-24 px-6 relative z-10">
+      <div class="max-w-2xl mx-auto text-center relative">
+        <div class="absolute -top-10 left-1/2 -translate-x-1/2 text-8xl text-[#C34A3A] opacity-10 font-serif">“</div>
+        
+        <h2 class="font-montserrat text-sm md:text-base tracking-widest uppercase text-gray-500 mb-6">Mensagem Especial</h2>
+        <blockquote id="main-quote" class="text-[#2A2A2A] text-xl md:text-3xl font-serif italic leading-relaxed">
+          "Cada dia contigo é simples e perfeito — obrigado por tornar cada momento leve e verdadeiro."
+        </blockquote>
+        <div class="mt-8 text-gray-800 font-bold font-montserrat">— João</div>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#FBFAF7] relative z-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h3 class="font-montserrat text-2xl font-bold">Nossos Momentos</h3>
+          <div class="w-16 h-1 bg-[#C34A3A] mx-auto mt-4 rounded-full opacity-80"></div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+          
+          <div class="polaroid p-3 rotate-1 hover:z-20 hover:scale-105 transition-all duration-300">
+            <div class="bg-white p-2 pb-4 shadow-sm photo-hover cursor-pointer h-full flex flex-col">
+              <img src="https://images.unsplash.com/photo-1509131544203-0b8c2a4a2a7a?q=80&w=800&auto=format&fit=crop" class="w-full aspect-square object-cover bg-gray-100" loading="lazy" onclick="openLightbox(this.src)">
+              <div class="mt-4 polaroid-caption text-center text-sm handwritten">Café da manhã</div>
+            </div>
+          </div>
+
+          <div class="polaroid p-3 -rotate-1 hover:z-20 hover:scale-105 transition-all duration-300">
+            <div class="bg-white p-2 pb-4 shadow-sm photo-hover cursor-pointer h-full flex flex-col">
+              <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=800&auto=format&fit=crop" class="w-full aspect-square object-cover bg-gray-100" loading="lazy" onclick="openLightbox(this.src)">
+              <div class="mt-4 polaroid-caption text-center text-sm handwritten">Chuva</div>
+            </div>
+          </div>
+
+          <div class="polaroid p-3 rotate-2 hover:z-20 hover:scale-105 transition-all duration-300">
+            <div class="bg-white p-2 pb-4 shadow-sm photo-hover cursor-pointer h-full flex flex-col">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" class="w-full aspect-square object-cover bg-gray-100" loading="lazy" onclick="openLightbox(this.src)">
+              <div class="mt-4 polaroid-caption text-center text-sm handwritten">Passeio</div>
+            </div>
+          </div>
+
+          <div class="polaroid p-3 -rotate-2 hover:z-20 hover:scale-105 transition-all duration-300">
+            <div class="bg-white p-2 pb-4 shadow-sm photo-hover cursor-pointer h-full flex flex-col">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" class="w-full aspect-square object-cover bg-gray-100" loading="lazy" onclick="openLightbox(this.src)">
+              <div class="mt-4 polaroid-caption text-center text-sm handwritten">Festival</div>
+            </div>
+          </div>
+
+           <div class="polaroid p-3 rotate-1 hover:z-20 hover:scale-105 transition-all duration-300">
+            <div class="bg-white p-2 pb-4 shadow-sm photo-hover cursor-pointer h-full flex flex-col">
+              <img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?q=80&w=800&auto=format&fit=crop" class="w-full aspect-square object-cover bg-gray-100" loading="lazy" onclick="openLightbox(this.src)">
+              <div class="mt-4 polaroid-caption text-center text-sm handwritten">Viagem</div>
+            </div>
+          </div>
+
+          <div class="polaroid p-3 -rotate-1 hover:z-20 hover:scale-105 transition-all duration-300">
+            <div class="bg-white p-2 pb-4 shadow-sm photo-hover cursor-pointer h-full flex flex-col">
+              <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800&auto=format&fit=crop" class="w-full aspect-square object-cover bg-gray-100" loading="lazy" onclick="openLightbox(this.src)">
+              <div class="mt-4 polaroid-caption text-center text-sm handwritten">Pôr do sol</div>
+            </div>
+          </div>
+
+          <div class="polaroid p-3 rotate-2 hover:z-20 hover:scale-105 transition-all duration-300">
+            <div class="bg-white p-2 pb-4 shadow-sm photo-hover cursor-pointer h-full flex flex-col">
+              <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?q=80&w=800&auto=format&fit=crop" class="w-full aspect-square object-cover bg-gray-100" loading="lazy" onclick="openLightbox(this.src)">
+              <div class="mt-4 polaroid-caption text-center text-sm handwritten">Sorrisos</div>
+            </div>
+          </div>
+
+          <div class="polaroid p-3 -rotate-2 hover:z-20 hover:scale-105 transition-all duration-300">
+            <div class="bg-white p-2 pb-4 shadow-sm photo-hover cursor-pointer h-full flex flex-col">
+              <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=800&auto=format&fit=crop" class="w-full aspect-square object-cover bg-gray-100" loading="lazy" onclick="openLightbox(this.src)">
+              <div class="mt-4 polaroid-caption text-center text-sm handwritten">Nós</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 px-6 relative z-10">
+      <div class="max-w-lg mx-auto text-center">
+        <h4 class="font-montserrat text-lg text-gray-500 uppercase tracking-widest mb-6">Nossa Trilha Sonora</h4>
+        <div class="rounded-xl overflow-hidden shadow-xl transform transition hover:scale-105 duration-300">
+          <iframe id="spotify" title="Spotify - Polaroid" src="https://open.spotify.com/embed/track/3d9DChrdc6BOeFsbrZ3Is0" width="100%" height="80" frameborder="0" allow="encrypted-media" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white relative z-10">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-12">
+          <h3 class="font-montserrat text-3xl font-bold text-[#2A2A2A]">Carta de Amor</h3>
+          <div class="w-16 h-1 bg-[#C34A3A] mx-auto mt-4 rounded-full opacity-80"></div>
+        </div>
+
+        <div class="bg-[#FBFAF7] rounded-sm p-8 md:p-12 shadow-2xl relative rotate-1">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-100/50 rotate-[-1deg] backdrop-blur-sm shadow-sm"></div>
+
+          <p id="letter" class="whitespace-pre-line text-[#2A2A2A] leading-relaxed font-serif text-lg">
+            Meu amor,
+
+            Cada pequeno gesto teu é um abrigo. Obrigado por partilhares este caminho comigo — pelos cafés, pelas caminhadas e por cada riso inesperado. 
+            
+            Você transforma dias comuns em memórias que eu quero guardar para sempre.
+
+            Com carinho, João
+          </p>
+
+          <div class="mt-12 pt-6 border-t border-gray-200 text-right">
+            <div class="text-xs text-[#C34A3A] font-bold uppercase tracking-widest mb-1">Com todo meu amor</div>
+            <div id="signed" class="font-montserrat text-2xl text-[#2A2A2A] font-bold">João</div>
+            <div id="signed-date" class="text-xs text-gray-400 mt-2 font-mono">14 Fevereiro 2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-12 px-6 bg-[#2A2A2A] text-white relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="text-2xl font-montserrat font-bold mb-2">AmorPages</div>
+        <div class="text-sm text-gray-400">Polaroid Theme • Feito com ❤️</div>
+      </div>
+    </footer>
+  </main>
+
+  <div id="lightbox" class="fixed inset-0 bg-[#1a1a1a]/95 z-[60] hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-gray-300 transition p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="Zoom" class="max-w-full max-h-[85vh] rounded shadow-2xl border-8 border-white transform scale-95 transition-transform duration-300">
+    <p class="absolute bottom-6 text-white/70 text-sm font-mono">Pressione ESC para fechar</p>
+  </div>
+
+  <script>
+    // compute days and inject dynamic fields from data attributes on #page
+    (function init() {
+      const root = document.getElementById('page');
+      const nameA = root.dataset.nameA || 'Ana';
+      const nameB = root.dataset.nameB || 'João';
+      const start = root.dataset.start || '2020-02-14';
+      const spotify = root.dataset.spotify || '3d9DChrdc6BOeFsbrZ3Is0';
+
+      // names
+      document.getElementById('hero-names').innerHTML = `${nameA} <span class="text-[#C34A3A] text-3xl align-middle">&</span> ${nameB}`;
+      document.getElementById('signed').textContent = nameB;
+
+      // days together
+      const startDate = new Date(start + 'T00:00:00');
+      const now = new Date();
+      const days = Math.max(0, Math.floor((now - startDate) / (1000*60*60*24)));
+      document.getElementById('days').textContent = `— ${days.toLocaleString()} dias juntos —`;
+
+      // whatsapp prefilled
+      const waMsg = encodeURIComponent(`Olá! Quero encomendar o template Polaroid para ${nameA} & ${nameB}.`);
+      document.getElementById('wa-link').href = `https://wa.me/258XXXXXXXXX?text=${waMsg}`;
+
+      // spotify embed (fixed URL construction)
+      // Note: The original provided URL had a small issue, using standard embed structure now:
+      document.getElementById('spotify').src = `https://open.spotify.com/embed/track/${spotify}?utm_source=generator`;
+    })();
+
+    // lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src){
+      lightboxImg.src = src;
+      lightbox.classList.remove('hidden');
+      
+      // Animations
+      setTimeout(()=> {
+        lightbox.classList.remove('opacity-0');
+        lightboxImg.classList.remove('scale-95');
+        lightboxImg.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeLightbox(){
+      lightbox.classList.add('opacity-0');
+      lightboxImg.classList.remove('scale-100');
+      lightboxImg.classList.add('scale-95');
+      
+      setTimeout(()=> { 
+          lightbox.classList.add('hidden'); 
+          lightboxImg.src = ''; 
+      }, 300);
+    }
+    document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+  </script>
+</body>
+</html>

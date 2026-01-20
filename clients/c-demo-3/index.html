@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vintage — Demo</title>
+  <meta name="description" content="Demo Vintage — tons quentes, ornamentos clássicos e tipografia elegante.">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vintage: {
+              deep: '#6B2E2B',
+              gold: '#D4A373',
+              cream: '#F6EDE2',
+              tan: '#C99B75',
+              soft: '#8C5A3C'
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            vintage: '0 10px 30px rgba(107,46,43,0.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .ornament { opacity: .9 }
+    .photo-hover { transition: transform .28s ease, filter .28s ease; }
+    .photo-hover:hover { transform: translateY(-6px) scale(1.02); filter: brightness(.95); cursor: zoom-in; }
+    .fade-up { opacity:0; transform:translateY(8px); animation:fadeUp .6s forwards ease-out; }
+    @keyframes fadeUp { to { opacity:1; transform:translateY(0) } }
+  </style>
+</head>
+<body class="antialiased bg-vintage-cream text-vintage-deep font-inter">
+
+  <!-- HERO -->
+  <section class="min-h-screen flex items-center justify-center px-6 py-20 relative overflow-hidden">
+    <!-- subtle textured background (SVG) -->
+    <svg class="absolute inset-0 w-full h-full -z-10" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1">
+          <stop offset="0" stop-color="#fffaf7" stop-opacity="1"/>
+          <stop offset="1" stop-color="#fff5ee" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#g1)"></rect>
+    </svg>
+
+    <div class="max-w-3xl w-full text-center relative z-10 fade-up">
+      <!-- ornate frame (SVG) + photo -->
+      <div class="mx-auto mb-8 relative w-48 h-48 md:w-64 md:h-64">
+        <!-- SVG ornamental ring -->
+        <svg viewBox="0 0 200 200" class="absolute inset-0 w-full h-full ornament" aria-hidden>
+          <defs>
+            <radialGradient id="rg" cx="50%" cy="30%">
+              <stop offset="0%" stop-color="#fff6ef"/>
+              <stop offset="100%" stop-color="#f3e7db"/>
+            </radialGradient>
+          </defs>
+          <circle cx="100" cy="100" r="96" fill="none" stroke="#D4A373" stroke-width="3"/>
+          <g stroke="#C99B75" stroke-width="1.2" fill="none" transform="translate(0,0)">
+            <path d="M20 100 q30 -60 80 -60 q50 0 80 60" stroke-linecap="round" opacity="0.65"></path>
+            <path d="M20 120 q30 60 80 60 q50 0 80 -60" stroke-linecap="round" opacity="0.45"></path>
+          </g>
+        </svg>
+
+        <div class="absolute inset-4 rounded-full overflow-hidden ring-4 ring-vintage-cream shadow-vintage">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" alt="Casal vintage" class="w-full h-full object-cover">
+        </div>
+
+        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-vintage-gold text-white text-sm px-3 py-1 rounded-full font-semibold shadow">
+          3 anos juntos
+        </div>
+      </div>
+
+      <h1 class="font-serif text-4xl md:text-5xl text-vintage-deep font-bold mb-3 tracking-tight">
+        Helena <span class="text-vintage-gold">&</span> Miguel
+      </h1>
+
+      <div class="mx-auto w-20 h-[2px] bg-vintage-gold my-4"></div>
+
+      <p class="text-vintage-soft/90 max-w-xl mx-auto text-base md:text-lg">
+        Um cartão com alma: ornamentos clássicos, papel digital e lembranças que se sentem antigas e verdadeiras.
+      </p>
+
+      <div class="mt-8 flex items-center justify-center gap-3">
+        <a href="https://wa.me/258XXXXXXXXX?text=Olá%20!%20Quero%20encomendar%20o%20Vintage" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-vintage-deep text-white font-semibold shadow hover:opacity-95 transition">
+          Encomendar
+        </a>
+        <a href="#message" class="inline-block px-5 py-3 rounded-md border border-vintage-soft text-vintage-soft hover:bg-vintage-soft/10 transition">Ler a carta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESSAGE -->
+  <section id="message" class="py-20 px-6 bg-white">
+    <div class="max-w-2xl mx-auto text-center fade-up">
+      <!-- decorative flourish -->
+      <svg class="mx-auto mb-3" width="56" height="18" viewBox="0 0 56 18" fill="none" aria-hidden>
+        <path d="M2 9c10-7 18 7 28 0 10-7 18 7 28 0" stroke="#C99B75" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+
+      <h2 class="font-serif text-2xl md:text-3xl text-vintage-deep font-semibold mb-4">Carta de Amor</h2>
+      <blockquote class="text-vintage-deep/90 italic text-lg md:text-xl leading-relaxed">
+        "Desde a primeira canção até a última caminhada, guardo cada riso como se fosse uma pequena relíquia."
+      </blockquote>
+
+      <div class="mt-6 text-vintage-soft font-medium">— Miguel</div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="py-16 px-6 bg-vintage-cream border-t border-b border-vintage-soft/30">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-8">
+        <h3 class="font-serif text-xl text-vintage-deep font-semibold">Memórias</h3>
+        <div class="w-12 h-[2px] bg-vintage-gold mx-auto mt-3"></div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="photo-hover rounded-lg overflow-hidden bg-white shadow-vintage aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1509131544203-0b8c2a4a2a7a?q=80&w=1200&auto=format&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1509131544203-0b8c2a4a2a7a?q=80&w=800&auto=format&fit=crop" alt="Momento 1" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-hover rounded-lg overflow-hidden bg-white shadow-vintage aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" alt="Momento 2" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-hover rounded-lg overflow-hidden bg-white shadow-vintage aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1502568091085-6b3b6e8e2cfc?q=80&w=1200&auto=format&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1502568091085-6b3b6e8e2cfc?q=80&w=800&auto=format&fit=crop" alt="Momento 3" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-hover rounded-lg overflow-hidden bg-white shadow-vintage aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" alt="Momento 4" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section class="py-12 px-6 bg-vintage-soft/8">
+    <div class="max-w-lg mx-auto text-center">
+      <h4 class="font-serif text-lg text-vintage-deep font-semibold mb-4">Trilha sonora</h4>
+      <div class="rounded-xl overflow-hidden border border-vintage-soft shadow-sm">
+        <iframe title="Spotify - Vintage Track" src="https://open.spotify.com/embed/track/3d9DChrdc6BOeFsbrZ3Is0" width="100%" height="80" frameborder="0" allow="encrypted-media" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 px-6 bg-white border-t border-vintage-soft/30">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="text-sm text-vintage-deep">Vintage — Demo • AmorPages</div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="fixed inset-0 bg-black/85 z-50 hidden items-center justify-center p-4">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/80 hover:text-white p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="Zoom" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.remove('hidden');
+      setTimeout(() => lightbox.classList.add('flex'), 10);
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('flex');
+      setTimeout(() => lightbox.classList.add('hidden'), 250);
+      lightboxImg.src = '';
+    }
+
+    document.addEventListener('keydown', function(event){
+      if(event.key === "Escape"){ closeLightbox(); }
+    });
+  </script>
+</body>
+</html>
