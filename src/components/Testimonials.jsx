@@ -5,7 +5,7 @@ const data = [
     role: "Cliente",
     quote:
       "Surpreendeu o meu namorado — ficou emocionado. Entrega rápida e muito cuidado com as fotos.",
-    avatar: "/src/assets/avatars/test2.webp",
+    avatar: "/avatars/test2.webp",
   },
   {
     id: "t2",
@@ -13,7 +13,7 @@ const data = [
     role: "Cliente",
     quote:
       "Design lindo e o processo foi super simples. Recomendo a quem quer algo pessoal.",
-    avatar: "/src/assets/avatars/test1.webp",
+    avatar: "/avatars/test1.webp",
   },
   {
     id: "t3",
@@ -21,7 +21,7 @@ const data = [
     role: "Cliente",
     quote:
       "O template Premium ficou perfeito. As animações são subtis e muito elegantes.",
-    avatar: "/src/assets/avatars/test3.webp",
+    avatar: "/avatars/test3.webp",
   },
 ];
 export default function Testimonials() {
