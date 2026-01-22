@@ -94,7 +94,7 @@ export default function PriceCard({
       {/* Button Container */}
       <div className="mt-auto w-full">
         <a
-          href={`https://wa.me/258XXXXXXXXX?text=${encodeURIComponent(
+          href={`https://wa.me/244932783626?text=${encodeURIComponent(
             `Olá! Quero o pacote ${title} para o template ${slug}. Nome: __; Data: __.`
           )}`}
           target="_blank"

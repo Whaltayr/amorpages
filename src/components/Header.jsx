@@ -23,7 +23,7 @@ export default function Header() {
         {/* Action Button - Always Shown */}
         <div className="flex items-center">
           <a 
-            href="https://wa.me/258XXXXXXXXX?text=Ol%C3%A1%2C%20quero%20encomendar" 
+            href="https://wa.me/244932783626?text=Ol%C3%A1%2C%20quero%20encomendar" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex gap-2 items-center px-4 py-2 bg-linear-to-r from-grad-cta1 to-grad-cta2 text-white rounded-[30px] text-sm font-medium transition-transform active:scale-95 shadow-md"

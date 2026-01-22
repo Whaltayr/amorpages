@@ -19,7 +19,7 @@ export default function Footer() {
 
           <div className="mt-4 flex items-center gap-3">
             <a
-              href="https://wa.me/258XXXXXXXXX?text=Ol%C3%A1%2C%20quero%20saber%20mais"
+              href="https://wa.me/244932783626?text=Ol%C3%A1%2C%20quero%20saber%20mais"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-3 py-2 bg-grad-cta1 text-white rounded"
