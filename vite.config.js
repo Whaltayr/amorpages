@@ -4,6 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-   base: '/amorpages/', // <--- change to "/lovelive/" if your repo/name is lovelive,
+   base: '/', // <--- change to "/lovelive/" if your repo/name is lovelive,
   plugins: [react(),tailwindcss()],
 })
