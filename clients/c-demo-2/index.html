@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Minimal Clean — Demo</title>
+  <meta name="description" content="Demo Minimal Clean — design limpo, foco em conteúdo e tipografia.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neutral: {
+              cream: '#FAF7F2',
+              soft: '#F1EFEA',
+              body: '#6B6B6B',
+              heading: '#222222',
+              accent: '#2B6CB0' 
+            }
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            montserrat: ['Montserrat', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 6px 20px rgba(16,24,40,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .photo-hover { transition: transform .28s ease, filter .28s ease; }
+    .photo-hover:hover { transform: translateY(-6px) scale(1.02); filter: brightness(.98); cursor: zoom-in; }
+    .fade-in { opacity: 0; transform: translateY(6px); animation: fadeIn .5s forwards ease-out; }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+
+<body class="antialiased bg-neutral-cream text-neutral-body font-inter selection:bg-neutral-accent selection:text-white">
+
+  <section class="min-h-screen flex items-center justify-center px-6 py-16">
+    <div class="max-w-3xl w-full text-center">
+      <div class="mx-auto mb-8 w-44 h-44 md:w-56 md:h-56 rounded-full overflow-hidden border border-neutral-soft shadow-soft">
+        <img src="./assets/hero.webp" alt="Casal" class="w-full h-full object-cover">
+      </div>
+
+      <h1 class="font-montserrat text-neutral-heading text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-3">
+        Ana <span class="text-neutral-accent">&</span> João
+      </h1>
+
+      <p class="text-neutral-body/90 max-w-xl mx-auto text-base md:text-lg mb-6">
+        Minimal, elegante e direto — um cartão digital que coloca as vossas memórias em primeiro plano.
+      </p>
+
+      <div class="flex items-center justify-center gap-3 mt-6">
+        <a href="#" class="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-neutral-accent text-white font-semibold shadow-md hover:opacity-95 transition">
+          Encomendar
+        </a>
+        <a href="#message" class="inline-block px-5 py-3 rounded-md border border-neutral-accent text-neutral-body hover:bg-neutral-soft transition">Ler mensagem</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="message" class="py-20 px-6">
+    <div class="max-w-2xl mx-auto text-center fade-in">
+      <h2 class="font-montserrat text-2xl md:text-3xl text-neutral-heading font-semibold mb-4">Mensagem Especial</h2>
+      <blockquote class="text-neutral-body text-lg md:text-xl italic leading-relaxed">
+        "Cada dia contigo é simples e perfeito — obrigado por tornar cada momento leve e verdadeiro."
+      </blockquote>
+      <div class="mt-6 text-neutral-body/80 font-medium">— João</div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6 bg-neutral-soft">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-8">
+        <h3 class="font-montserrat text-xl text-neutral-heading font-semibold">Nossos Momentos</h3>
+        <div class="w-12 h-px bg-neutral-accent mx-auto mt-3"></div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="photo-hover rounded-lg overflow-hidden bg-white shadow-soft aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800')">
+          <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800" alt="Amor e Cumplicidade" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-hover rounded-lg overflow-hidden bg-white shadow-soft aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1511285560982-1351c4f809b5?q=80&w=800')">
+          <img src="https://images.unsplash.com/photo-1511285560982-1351c4f809b5?q=80&w=800" alt="Caminho Juntos" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-hover rounded-lg overflow-hidden bg-white shadow-soft aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1522673607200-1648834637f9?q=80&w=800')">
+          <img src="https://images.unsplash.com/photo-1522673607200-1648834637f9?q=80&w=800" alt="Momentos Felizes" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-hover rounded-lg overflow-hidden bg-white shadow-soft aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=800')">
+          <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=800" alt="Eternidade" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 px-6">
+    <div class="max-w-xl mx-auto text-center">
+      <h4 class="font-montserrat text-lg text-neutral-heading font-semibold mb-4">Nossa Música</h4>
+      <div class="rounded-xl overflow-hidden border border-neutral-soft shadow-sm">
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/51eUS5Tzc3zpAftVvCnvBg?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-6 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-10">
+        <h3 class="font-montserrat text-2xl font-semibold text-neutral-heading">Carta de Amor</h3>
+        <div class="w-12 h-px bg-neutral-soft mx-auto mt-3"></div>
+      </div>
+
+      <div class="bg-neutral-cream rounded-2xl p-8 border border-neutral-soft shadow-sm">
+        <p class="text-neutral-heading font-montserrat text-lg mb-4">Meu amor,</p>
+        <p class="text-neutral-body leading-relaxed whitespace-pre-line">
+          Cada pequeno gesto teu é um abrigo. Obrigado por partilhares este caminho comigo — pelos cafés, pelas caminhadas e por cada riso inesperado.
+        </p>
+
+        <div class="mt-8 text-right">
+          <div class="text-neutral-accent text-sm font-semibold">Com carinho,</div>
+          <div class="font-montserrat text-lg text-neutral-heading font-bold">João</div>
+          <div class="text-neutral-body/70 text-xs mt-1">14 Fevereiro 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 px-6 bg-white border-t border-neutral-soft">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="text-sm text-neutral-body">Minimal Clean — Demo • AmorPages</div>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+    <button class="absolute top-6 right-6 text-white/80 hover:text-white p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="Zoom" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl transition-transform duration-300">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.replace('hidden', 'flex');
+      setTimeout(() => { lightbox.classList.add('opacity-100'); }, 10);
+    }
+
+    function closeLightbox() {
+      lightbox.classList.replace('flex', 'hidden');
+      lightboxImg.src = '';
+    }
+
+    document.addEventListener('keydown', (e) => { if(e.key === "Escape") closeLightbox(); });
+  </script>
+</body>
+</html>
