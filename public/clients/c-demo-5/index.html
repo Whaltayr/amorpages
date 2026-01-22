@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Moonlight — Amor Noturno</title>
+  <meta name="description" content="Moonlight — Template romântico noturno.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            moon: {
+              base: '#0F172A',   // Azul meia-noite (fundo principal)
+              light: '#1E293B',  // Azul suave (cartões/seções)
+              silver: '#E5E7EB', // Prata claro (texto principal)
+              ice: '#F8FAFC',    // Branco gelo (títulos)
+              accent: '#A78BFA', // Lavanda (detalhes/botões)
+              glow: 'rgba(167, 139, 250, 0.5)' // Cor do brilho
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Fundo de Estrelas Sutil */
+    .bg-stars {
+      background-color: #0F172A;
+      background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+      background-size: 550px 550px, 350px 350px, 250px 250px;
+      background-position: 0 0, 40px 60px, 130px 270px;
+    }
+
+    /* Efeito de Halo Lunar na Foto */
+    .moon-halo {
+      box-shadow: 0 0 40px -10px var(--tw-color-moon-glow);
+    }
+
+    /* Interações da Galeria */
+    .photo-card { transition: all 0.4s ease; }
+    .photo-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 10px 30px -10px rgba(167, 139, 250, 0.3);
+      filter: brightness(1.1);
+    }
+  </style>
+</head>
+<body class="antialiased bg-moon-base text-moon-silver font-sans bg-stars selection:bg-moon-accent selection:text-white">
+
+  <main id="page" data-name-a="Ana" data-name-b="Pedro" data-start="2019-06-12" data-spotify="4rv8D6vKj5mY1vO7Jk6c2r">
+    
+    <section class="min-h-screen flex items-center justify-center px-6 py-20 relative overflow-hidden">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-moon-accent/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="max-w-3xl w-full text-center relative z-10">
+        
+        <div class="relative inline-block mb-10 group">
+          <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-moon-silver/20 moon-halo mx-auto transition-transform duration-700 hover:scale-105">
+            <img id="hero-img" src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=800&auto=format&fit=crop" alt="Casal" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+          </div>
+          <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-moon-light border border-moon-silver/10 px-6 py-2 rounded-full text-xs uppercase tracking-widest text-moon-accent shadow-lg backdrop-blur-md">
+            <span id="days">Calculando...</span>
+          </div>
+        </div>
+
+        <h1 class="font-serif text-4xl md:text-6xl text-moon-ice mb-4 leading-tight">
+          <span id="name-a">Ana</span> <span class="text-moon-accent text-3xl italic mx-2">&</span> <span id="name-b">Pedro</span>
+        </h1>
+
+        <p class="text-moon-silver/60 text-sm md:text-base font-light tracking-wide max-w-lg mx-auto mb-10">
+          Sob a mesma lua, escrevendo a nossa história eterna.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a id="wa-link" href="#" target="_blank" class="w-full sm:w-auto px-8 py-3 rounded-full bg-moon-accent text-white font-medium hover:bg-moon-accent/90 transition shadow-[0_0_20px_rgba(167,139,250,0.4)] hover:shadow-[0_0_30px_rgba(167,139,250,0.6)]">
+            Encomendar
+          </a>
+          <a href="#message" class="w-full sm:w-auto px-8 py-3 rounded-full border border-moon-silver/20 text-moon-silver hover:bg-white/5 transition">
+            Ler carta
+          </a>
+        </div>
+      </div>
+
+      <div class="absolute bottom-10 animate-pulse-slow text-moon-silver/30">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+      </div>
+    </section>
+
+    <section id="message" class="py-24 px-6 bg-gradient-to-b from-moon-base to-moon-light/50">
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="text-moon-accent text-2xl mb-4">✦</div>
+        <h2 class="font-serif text-2xl md:text-3xl text-moon-ice mb-8">Mensagem Especial</h2>
+        
+        <blockquote class="text-lg md:text-2xl text-moon-silver/90 italic font-serif leading-relaxed border-l-2 border-moon-accent/30 pl-6 md:pl-0 md:border-none">
+          "Você é a minha paz no fim do dia e a minha certeza em todas as manhãs. Te amar é como olhar o céu: infinito e brilhante."
+        </blockquote>
+        
+        <div class="mt-8 flex items-center justify-center gap-2 text-sm text-moon-accent uppercase tracking-widest">
+          <span class="w-8 h-px bg-moon-accent/50"></span>
+          De <span id="msg-sender">Pedro</span>
+          <span class="w-8 h-px bg-moon-accent/50"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-moon-light/30 border-y border-white/5">
+      <div class="max-w-5xl mx-auto">
+        <div class="flex items-end justify-between mb-12">
+          <div>
+            <h2 class="font-serif text-3xl text-moon-ice">Momentos</h2>
+            <div class="h-1 w-12 bg-moon-accent mt-2 rounded-full"></div>
+          </div>
+          <div class="text-moon-silver/40 text-sm hidden md:block">Clique para ampliar</div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="aspect-[3/4] rounded-lg overflow-hidden photo-card cursor-pointer group" onclick="openLightbox('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600&auto=format&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="aspect-[3/4] rounded-lg overflow-hidden photo-card cursor-pointer group md:mt-8" onclick="openLightbox('https://images.unsplash.com/photo-1621112904887-419379ce6824?q=80&w=600&auto=format&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1621112904887-419379ce6824?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="aspect-[3/4] rounded-lg overflow-hidden photo-card cursor-pointer group" onclick="openLightbox('https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="aspect-[3/4] rounded-lg overflow-hidden photo-card cursor-pointer group md:mt-8" onclick="openLightbox('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=600&auto=format&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 px-6">
+      <div class="max-w-lg mx-auto">
+        <div class="bg-moon-light rounded-2xl p-6 border border-white/5 shadow-2xl flex flex-col items-center text-center">
+          <h3 class="font-serif text-xl text-moon-ice mb-4">Nossa Trilha Sonora</h3>
+          <div class="w-full rounded-lg overflow-hidden opacity-90 hover:opacity-100 transition-opacity">
+         <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/51eUS5Tzc3zpAftVvCnvBg?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 relative">
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-moon-light/40 backdrop-blur-sm rounded-xl p-8 md:p-12 border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.3)]">
+          
+          <div class="flex justify-between items-start mb-8">
+            <h2 class="font-serif text-3xl text-moon-ice">Carta de Amor</h2>
+            <div class="text-4xl text-moon-accent/20 font-serif">“</div>
+          </div>
+
+          <div class="space-y-6 text-moon-silver/80 font-light leading-relaxed text-lg">
+            <p>Meu amor,</p>
+            <p>Quando a noite cai, é em você que eu penso. Obrigado por iluminar meus dias e aquecer minhas noites. Essa página é apenas um pequeno reflexo do universo que existe dentro de nós.</p>
+            <p>Prometo te amar em todas as fases da lua.</p>
+          </div>
+
+          <div class="mt-12 flex items-center justify-end gap-4">
+            <div class="text-right">
+              <p class="font-serif text-xl text-moon-ice" id="letter-sign">Pedro</p>
+              <p class="text-xs text-moon-silver/40 uppercase tracking-widest mt-1">Para sempre</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-10 text-center border-t border-white/5 bg-moon-base">
+      <p class="font-serif text-moon-ice text-lg"><span id="footer-n1">Ana</span> & <span id="footer-n2">Pedro</span></p>
+      <p class="text-xs text-moon-silver/30 mt-2">AmorPages • Moonlight Theme</p>
+    </footer>
+
+  </main>
+
+  <div id="lightbox" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-4 backdrop-blur-md transition-all duration-300 opacity-0">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-moon-silver hover:text-white p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <img id="lightbox-img" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-[0_0_50px_rgba(167,139,250,0.2)] transform scale-95 transition-transform duration-300">
+  </div>
+
+  <script>
+    // Inicialização e preenchimento de dados
+    const root = document.getElementById('page');
+    const nameA = root.dataset.nameA;
+    const nameB = root.dataset.nameB;
+    const start = root.dataset.start;
+    const spotifyId = root.dataset.spotify;
+
+    // Preencher Textos
+    document.getElementById('name-a').textContent = nameA;
+    document.getElementById('name-b').textContent = nameB;
+    document.getElementById('msg-sender').textContent = nameB;
+    document.getElementById('letter-sign').textContent = nameB;
+    document.getElementById('footer-n1').textContent = nameA;
+    document.getElementById('footer-n2').textContent = nameB;
+
+    // Calcular Dias
+    const startDate = new Date(start);
+    const today = new Date();
+    const diff = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+    document.getElementById('days').textContent = diff + " noites juntos";
+
+    // Link WhatsApp
+    const text = encodeURIComponent(`Olá! Quero encomendar o template Moonlight para ${nameA} e ${nameB}`);
+    document.getElementById('wa-link').href = `https://wa.me/258XXXXXXXXX?text=${text}`;
+
+    // Spotify
+    document.getElementById('spotify').src = `https://open.spotify.com/embed/track/${spotifyId}?utm_source=generator&theme=0`;
+
+    // Lightbox Logic
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src) {
+      lbImg.src = src;
+      lb.classList.remove('hidden');
+      setTimeout(() => {
+        lb.classList.remove('opacity-0');
+        lbImg.classList.remove('scale-95');
+        lbImg.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeLightbox() {
+      lb.classList.add('opacity-0');
+      lbImg.classList.remove('scale-100');
+      lbImg.classList.add('scale-95');
+      setTimeout(() => {
+        lb.classList.add('hidden');
+      }, 300);
+    }
+    
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox() });
+  </script>
+</body>
+</html>

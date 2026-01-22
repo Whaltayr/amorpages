@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Deluxe — Memória Eterna</title>
+  
+  <meta name="description" content="Uma produção cinematográfica sobre a nossa história.">
+  <meta property="og:title" content="Nossa Memória Eterna">
+  <meta property="og:image" content="./assets/og.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            deluxe: {
+              gold: '#C5A059',
+              goldLight: '#E2C28A',
+              bg: '#080808',
+              surface: '#121212',
+              text: '#F2F2F2',
+              dim: '#888888'
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+          animation: {
+            'reveal-up': 'revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'ken-burns': 'kenBurns 30s infinite alternate'
+          },
+          keyframes: {
+            revealUp: { '0%': { opacity: '0', transform: 'translateY(40px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            kenBurns: { '0%': { transform: 'scale(1)' }, '100%': { transform: 'scale(1.2)' } }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilo de Impressão para a Carta */
+    @media print {
+      body * { visibility: hidden; }
+      #print-area, #print-area * { visibility: visible; }
+      #print-area { position: absolute; left: 0; top: 0; width: 100%; color: #000 !important; background: white !important; }
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 50%; transform: translateX(-50%);
+      top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(to bottom, transparent, #C5A059 15%, #C5A059 85%, transparent);
+    }
+    @media (max-width: 768px) { .timeline-line { left: 24px; } }
+
+    .reveal { opacity: 0; }
+    .reveal.active { animation: revealUp 1s forwards; }
+    
+    #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 0.8s ease; }
+  </style>
+</head>
+
+<body class="bg-deluxe-bg text-deluxe-text font-sans selection:bg-deluxe-gold selection:text-black">
+
+  <div id="loader">
+    <div class="text-center">
+      <div class="text-deluxe-gold font-serif text-3xl tracking-[0.5em] mb-4">MEMÓRIA ETERNA</div>
+      <div class="w-48 h-[1px] bg-white/10 mx-auto relative overflow-hidden">
+        <div class="absolute inset-0 bg-deluxe-gold translate-x-[-100%] animate-[progress_2s_infinite]"></div>
+      </div>
+    </div>
+  </div>
+
+  <header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-black/50 z-10"></div>
+      <img id="hero-media" src="" class="w-full h-full object-cover animate-ken-burns">
+    </div>
+
+    <div class="relative z-20 text-center px-6">
+      <p class="text-deluxe-gold uppercase tracking-[0.6em] text-xs mb-8 opacity-0 animate-reveal-up" style="animation-delay: 0.5s">Um Momento para Sempre</p>
+      <h1 class="font-serif text-6xl md:text-9xl font-bold mb-10 leading-tight opacity-0 animate-reveal-up" style="animation-delay: 0.8s">
+        <span id="name-a"></span> <br class="md:hidden"> 
+        <span class="text-deluxe-gold italic font-light">&</span> <br class="md:hidden"> 
+        <span id="name-b"></span>
+      </h1>
+      <div id="days-counter" class="text-deluxe-dim tracking-[0.3em] uppercase text-sm opacity-0 animate-reveal-up" style="animation-delay: 1.1s"></div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+      <button onclick="document.getElementById('letter-section').scrollIntoView()" class="text-deluxe-gold/50">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="1"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section id="letter-section" class="py-40 px-6 max-w-5xl mx-auto reveal">
+    <div id="print-area" class="relative bg-deluxe-surface p-12 md:p-24 border border-white/5 shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-deluxe-bg px-8 py-2 border border-deluxe-gold text-deluxe-gold font-serif italic">
+        Abertura
+      </div>
+      
+      <div class="font-serif text-3xl md:text-5xl text-deluxe-gold mb-16 leading-snug italic" id="letter-title"></div>
+      <p id="letter-body" class="text-lg md:text-2xl text-deluxe-dim leading-relaxed font-light whitespace-pre-line mb-16"></p>
+      
+      <div class="flex justify-between items-end border-t border-white/10 pt-12">
+        <div id="letter-date" class="text-deluxe-gold font-serif italic text-xl"></div>
+        <button onclick="window.print()" class="text-xs uppercase tracking-widest text-deluxe-dim hover:text-deluxe-gold transition md:block hidden">Imprimir Memória (PDF)</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-32 bg-[#050505] relative reveal">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="font-serif text-4xl md:text-6xl text-center mb-32">Nossa Jornada</h2>
+      
+      <div class="relative">
+        <div class="timeline-line"></div>
+        <div id="timeline-container" class="space-y-32">
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-40 px-6 reveal">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+        <div>
+          <h2 class="font-serif text-5xl mb-4 italic">Retratos</h2>
+          <p class="text-deluxe-dim uppercase tracking-widest text-xs">Coleção de Momentos Eternos</p>
+        </div>
+        <div class="h-[1px] flex-grow bg-white/10 hidden md:block mx-12"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6" id="gallery-grid">
+        </div>
+    </div>
+  </section>
+
+  <section class="py-32 bg-deluxe-surface border-y border-white/5 reveal">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <div id="surprise-lock" class="cursor-pointer group">
+        <div class="w-20 h-20 bg-deluxe-gold rounded-full mx-auto flex items-center justify-center mb-8 group-hover:scale-110 transition duration-500 shadow-[0_0_30px_rgba(197,160,89,0.3)]">
+          <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 15V17M6 21H18C19.1046 21 20 20.1046 20 19V13C20 11.8954 19.1046 11 18 11H6C4.89543 11 4 11.8954 4 13V19C4 20.1046 4.89543 21 6 21ZM16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11H16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-serif text-2xl mb-4 italic">Um segredo para você</h3>
+        <p class="text-deluxe-dim text-sm uppercase tracking-widest">Clique para desbloquear</p>
+      </div>
+      
+      <div id="surprise-content" class="hidden animate-reveal-up">
+        <div class="max-w-2xl mx-auto mt-12 p-8 bg-deluxe-bg rounded-lg border border-deluxe-gold/20">
+          <p class="italic text-xl text-deluxe-gold" id="surprise-text"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-40 px-6 text-center">
+    <div class="mb-20">
+      <div id="qrcode" class="bg-white p-3 rounded-xl inline-block mb-6"></div>
+      <p class="text-deluxe-dim text-xs uppercase tracking-[0.4em]">Digital Pass & Physical Access</p>
+    </div>
+    
+    <div class="max-w-xs mx-auto mb-12">
+      <div class="rounded-full overflow-hidden border border-white/10">
+        <iframe id="spotify-player" src="" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      </div>
+    </div>
+
+    <h2 class="font-serif text-3xl italic mb-4" id="footer-names"></h2>
+    <p class="text-deluxe-dim text-[10px] uppercase tracking-[0.8em] opacity-30">Deluxe Template by AmorPages</p>
+  </footer>
+
+  <div id="lightbox" class="fixed inset-0 bg-black/95 z-[10000] hidden flex items-center justify-center p-4 md:p-20 opacity-0 transition-all duration-500 backdrop-blur-2xl" onclick="closeLightbox()">
+    <button class="absolute top-10 right-10 text-white/30 hover:text-deluxe-gold transition-colors z-[10001]">
+      <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="1"/></svg>
+    </button>
+    <img id="lightbox-img" src="" class="max-w-full max-h-full object-contain shadow-2xl transform scale-95 transition-transform duration-500 m-auto">
+  </div>
+
+  <script>
+    // DATA CONFIGURATION
+    const data = {
+      names: { a: "Gabriel", b: "Beatriz" },
+      startDate: "2019-11-12",
+      hero: {
+        type: "image", // ou "video"
+        src: "assets/hero.webp"
+      },
+      letter: {
+        title: "Onde o tempo parou para nós.",
+        body: "Beatriz, \n\nAlgumas pessoas passam a vida procurando um sentido. Eu encontrei o meu no momento em que nossos olhares se cruzaram naquele outono.\n\nEsta página é um santuário para as nossas memórias. Cada pixel aqui carrega um pouco da luz que você trouxe para os meus dias escuros. Que este filme nunca chegue aos créditos finais.",
+        date: "Novembro de 2024"
+      },
+      timeline: [
+        { year: "2019", title: "O Encontro", desc: "A chuva caía lá fora, mas dentro daquele café o sol brilhava.", icon: "☕" },
+        { year: "2021", title: "O Primeiro 'Sim'", desc: "Sob as luzes de Paris, prometemos o mundo um ao outro.", icon: "💍" },
+        { year: "2024", title: "Nosso Lar", desc: "As chaves do nosso castelo e o início do para sempre.", icon: "🗝️" }
+      ],
+      gallery: [
+        "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800",
+        "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=1200",
+        "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800",
+        "https://images.unsplash.com/photo-1465495910483-0d674115f97f?q=80&w=1200"
+      ],
+      spotify: "3d9DChrdc6BOeFsbrZ3Is0",
+      surprise: "Você é o meu melhor roteiro. Te amo hoje e em todas as vidas. ❤️"
+    };
+
+    // ENGINE
+    document.addEventListener('DOMContentLoaded', () => {
+      // Injetar Textos
+      document.getElementById('name-a').innerText = data.names.a;
+      document.getElementById('name-b').innerText = data.names.b;
+      document.getElementById('footer-names').innerText = `${data.names.a} & ${data.names.b}`;
+      document.getElementById('letter-title').innerText = data.letter.title;
+      document.getElementById('letter-body').innerText = data.letter.body;
+      document.getElementById('letter-date').innerText = data.letter.date;
+      document.getElementById('surprise-text').innerText = data.surprise;
+      document.getElementById('hero-media').src = data.hero.src;
+      document.getElementById('spotify-player').src = `https://open.spotify.com/embed/track/${data.spotify}?utm_source=generator&theme=0`;
+
+      // Contador de Dias
+      const diff = Math.floor((new Date() - new Date(data.startDate)) / (86400000));
+      document.getElementById('days-counter').innerText = `${diff.toLocaleString()} DIAS DE AMOR`;
+
+      // Render Timeline (CORREÇÃO DE ESPAÇO)
+      const tl = document.getElementById('timeline-container');
+      data.timeline.forEach((item, i) => {
+        const isRight = i % 2 !== 0;
+        const div = document.createElement('div');
+        div.className = `relative flex w-full md:w-1/2 mb-20 ${isRight ? 'md:ml-auto' : 'md:mr-auto'}`;
+        div.innerHTML = `
+          <div class="absolute left-[-11px] md:left-auto ${isRight ? 'md:-left-[22px]' : 'md:-right-[22px]'} top-10 w-11 h-11 bg-deluxe-bg border border-deluxe-gold rounded-full z-20 flex items-center justify-center text-xl shadow-[0_0_20px_rgba(197,160,89,0.3)]">${item.icon}</div>
+          <div class="w-full ${isRight ? 'pl-16 md:pl-20' : 'pl-16 md:pl-0 md:pr-20 text-left md:text-right'}">
+            <span class="text-deluxe-gold font-serif italic text-2xl">${item.year}</span>
+            <h3 class="text-white text-3xl font-serif mt-2">${item.title}</h3>
+            <p class="text-deluxe-dim mt-6 leading-relaxed font-light">${item.desc}</p>
+          </div>
+        `;
+        tl.appendChild(div);
+      });
+
+      // Gallery Grid (Editorial Layout)
+      const grid = document.getElementById('gallery-grid');
+      data.gallery.forEach((src, i) => {
+        const colSpan = (i % 3 === 0) ? 'md:col-span-8' : 'md:col-span-4';
+        const div = document.createElement('div');
+        div.className = `${colSpan} h-[400px] overflow-hidden rounded-sm cursor-pointer group relative`;
+        div.onclick = () => openLightbox(src);
+        div.innerHTML = `<img src="${src}" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 opacity-70 group-hover:opacity-100">`;
+        grid.appendChild(div);
+      });
+
+      // Surprise Logic
+      document.getElementById('surprise-lock').onclick = function() {
+        this.classList.add('hidden');
+        document.getElementById('surprise-content').classList.remove('hidden');
+      };
+
+      // QR Code
+      new QRCode(document.getElementById("qrcode"), { text: window.location.href, width: 100, height: 100, colorDark: "#000", colorLight: "#fff" });
+
+      // Reveal & Loader
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+      
+      setTimeout(() => { 
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 800);
+      }, 2000);
+    });
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    function openLightbox(src) {
+      lbImg.src = src;
+      lb.classList.replace('hidden', 'flex');
+      setTimeout(() => { lb.classList.remove('opacity-0'); lbImg.classList.replace('scale-95', 'scale-100'); }, 50);
+    }
+    function closeLightbox() {
+      lb.classList.add('opacity-0');
+      lbImg.classList.replace('scale-100', 'scale-95');
+      setTimeout(() => lb.classList.replace('flex', 'hidden'), 500);
+    }
+  </script>
+</body>
+</html>

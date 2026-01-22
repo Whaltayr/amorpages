@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="pt" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cinematic Premium — Love Story</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cine: {
+              bg: '#050505',
+              surface: '#121212',
+              gold: '#D4AF37',
+              text: '#E5E5E5',
+              dim: '#A3A3A3'
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+          animation: {
+            'ken-burns': 'kenBurns 20s infinite alternate linear',
+            'fade-in-up': 'fadeInUp 1s ease-out forwards',
+          },
+          keyframes: {
+            kenBurns: { '0%': { transform: 'scale(1)' }, '100%': { transform: 'scale(1.15)' } },
+            fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* CUSTOM SCROLLBAR */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #050505; }
+    ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
+
+    /* REVEAL ANIMATION */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.9s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* TIMELINE FIX */
+    .timeline-container { position: relative; }
+    .timeline-line-visual {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, #D4AF37, #D4AF37, transparent);
+      z-index: 0;
+    }
+    @media (min-width: 768px) {
+      .timeline-line-visual { left: 50%; transform: translateX(-50%); }
+    }
+
+    /* DECORATIVE BORDERS */
+    .border-corner { position: absolute; width: 15px; height: 15px; border-color: #D4AF37; }
+
+    #loader { position: fixed; inset: 0; background: #000; z-index: 1000; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease; }
+  </style>
+</head>
+<body class="bg-cine-bg text-cine-text font-sans overflow-x-hidden">
+
+  <div id="loader">
+    <div class="text-cine-gold font-serif text-2xl tracking-[0.3em] animate-pulse uppercase">Cinematic Experience</div>
+  </div>
+
+  <header class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img id="hero-bg" src="" alt="Background" class="w-full h-full  object-contain opacity-50 animate-ken-burns">
+      <div class="absolute inset-0 bg-gradient-to-t from-cine-bg via-transparent to-cine-bg"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-6 animate-fade-in-up">
+      <p class="text-cine-gold uppercase tracking-[0.4em] text-xs mb-6">Uma produção original</p>
+      <h1 class="font-serif text-5xl md:text-8xl font-bold mb-8 leading-tight">
+        <span id="name-a"></span> <span class="text-cine-gold">&</span> <span id="name-b"></span>
+      </h1>
+      <div class="w-20 h-[1px] bg-cine-gold mx-auto mb-8"></div>
+      <p id="days-counter" class="text-cine-dim font-light text-sm md:text-base tracking-[0.3em] uppercase"></p>
+      
+      <button onclick="document.getElementById('letter').scrollIntoView()" class="mt-16 animate-bounce text-cine-gold/50 hover:text-cine-gold transition-colors">
+        <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="1"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section id="letter" class="py-32 px-6 max-w-4xl mx-auto reveal">
+    <div class="bg-cine-surface p-10 md:p-20 rounded-sm relative border border-white/5 shadow-2xl">
+      <div class="border-corner top-0 left-0 border-t border-l"></div>
+      <div class="border-corner top-0 right-0 border-t border-r"></div>
+      <div class="border-corner bottom-0 left-0 border-b border-l"></div>
+      <div class="border-corner bottom-0 right-0 border-b border-r"></div>
+
+      <h2 class="font-serif text-3xl text-cine-gold mb-12 text-center italic">Para o meu grande amor,</h2>
+      <p id="letter-content" class="text-lg md:text-xl leading-relaxed text-cine-dim font-light whitespace-pre-line"></p>
+      <div id="letter-sign" class="mt-12 font-serif text-2xl text-right text-cine-text italic"></div>
+    </div>
+  </section>
+
+  <section class="py-24 px-6 bg-[#080808] reveal">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-20">
+        <h2 class="font-serif text-4xl">Nossa Timeline</h2>
+        <div class="w-12 h-[1px] bg-cine-gold mx-auto mt-4"></div>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-line-visual"></div>
+        <div id="timeline-render" class="space-y-4">
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-32 px-6 reveal">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center gap-4 mb-16">
+        <h2 class="font-serif text-4xl">Galeria Privada</h2>
+        <div class="flex-grow h-[1px] bg-white/5"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="gallery-render">
+        </div>
+    </div>
+  </section>
+
+  <section class="py-32 px-6 bg-cine-surface border-y border-white/5 reveal">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20">
+      
+      <div>
+        <h3 class="font-serif text-2xl text-cine-gold mb-8 italic">Memory Quiz</h3>
+        <div id="quiz-card" class="bg-cine-bg p-8 rounded-xl border border-white/5">
+          <h4 id="quiz-question" class="text-xl mb-6 font-medium"></h4>
+          <div id="quiz-options" class="space-y-3"></div>
+          <p id="quiz-feedback" class="mt-6 text-sm italic min-h-[20px]"></p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-12">
+        <div>
+          <h3 class="font-serif text-2xl text-cine-gold mb-6 italic">Trilha Sonora</h3>
+          <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+            
+            <iframe id="spotify-frame" data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0bkTdkWwGk3OGFX0afD3Wj?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-8 bg-cine-bg p-6 rounded-2xl border border-white/5">
+          <div id="qrcode" class="bg-white p-2 rounded-lg"></div>
+          <div>
+            <p class="text-cine-gold uppercase tracking-widest text-xs font-bold mb-2">Acesso Mobile</p>
+            <p class="text-cine-dim text-sm leading-relaxed">Aponte a câmera para levar nossa história no seu bolso.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="py-20 text-center">
+    <p class="font-serif italic text-2xl text-cine-text mb-4">Fim da Temporada 1</p>
+    <p class="text-cine-dim text-xs uppercase tracking-[0.5em]">AmorPages Cinematic Premium</p>
+  </footer>
+
+  <div id="lightbox" class="fixed inset-0 bg-black/98 z-[2000] hidden flex items-center justify-center p-4 md:p-16 opacity-0 transition-all duration-500 backdrop-blur-xl" onclick="closeLightbox()">
+    <button class="absolute top-8 right-8 text-white/50 hover:text-cine-gold transition-colors z-[2100]">
+      <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="1.5"/></svg>
+    </button>
+    <div class="w-full h-full flex items-center justify-center">
+      <img id="lightbox-img" src="" class="max-w-full max-h-full object-contain shadow-2xl border border-white/10 transform scale-90 transition-transform duration-500 m-auto">
+    </div>
+  </div>
+
+  <script>
+    const data = {
+      names: { a: "Ana", b: "João" },
+      startDate: "2018-05-20",
+      heroImage: "assets/hero.webp",
+      letter: "Meu amor,\n\nEste é o nosso roteiro. Cada foto, cada música e cada data aqui presente faz parte do filme mais bonito que já assisti: a nossa vida juntos.\n\nObrigado por ser minha melhor co-protagonista.",
+      spotifyId: "3d9DChrdc6BOeFsbrZ3Is0",
+      timeline: [
+        { year: "2018", title: "O Primeiro Encontro", desc: "Um café que se transformou em uma vida inteira.", icon: "☕" },
+        { year: "2020", title: "Novo Lar", desc: "Decidimos juntar nossas escovas de dente e sonhos.", icon: "🏠" },
+        { year: "2024", title: "O Futuro", desc: "Continuamos escrevendo os melhores capítulos.", icon: "✨" }
+      ],
+      gallery: [
+        "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?q=80&w=800",
+        "https://images.unsplash.com/photo-1511285560982-1351c4f809b5?q=80&w=800",
+        "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800",
+        "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=800",
+        "https://images.unsplash.com/photo-1621112904887-419379ce6824?q=80&w=800",
+        "https://images.unsplash.com/photo-1545389336-cf090694435e?q=80&w=800"
+      ],
+      quiz: [
+        { q: "Qual a nossa música?", options: ["Yellow", "Perfect", "Fix You"], answer: 0 },
+        { q: "Quem cozinha melhor?", options: ["Ela", "Ele", "O Delivery"], answer: 2 }
+      ]
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // BÁSICOS
+      document.getElementById('name-a').innerText = data.names.a;
+      document.getElementById('name-b').innerText = data.names.b;
+      document.getElementById('hero-bg').src = data.heroImage;
+      document.getElementById('letter-content').innerText = data.letter;
+      document.getElementById('letter-sign').innerText = "- " + data.names.b;
+      document.getElementById('spotify-frame').src = `https://open.spotify.com/embed/track/${data.spotifyId}?utm_source=generator&theme=0`;
+
+      // CONTADOR
+      const diff = Math.floor((new Date() - new Date(data.startDate)) / (1000 * 60 * 60 * 24));
+      document.getElementById('days-counter').innerText = `${diff.toLocaleString()} Dias de História`;
+
+      // TIMELINE (CORREÇÃO DE ESPAÇAMENTO E LINHA)
+      const tlRender = document.getElementById('timeline-render');
+      data.timeline.forEach((event, index) => {
+        const isRight = index % 2 !== 0;
+        const div = document.createElement('div');
+        div.className = `relative flex w-full md:w-1/2 mb-16 ${isRight ? 'md:ml-auto' : 'md:mr-auto'}`;
+        div.innerHTML = `
+          <div class="absolute left-[-11px] md:left-auto ${isRight ? 'md:-left-[21px]' : 'md:-right-[21px]'} top-8 w-11 h-11 bg-cine-bg border border-cine-gold rounded-full z-20 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.3)]">${event.icon}</div>
+          <div class="w-full ${isRight ? 'pl-12 md:pl-16' : 'pl-12 md:pl-0 md:pr-16 text-left md:text-right'}">
+            <div class="p-8 bg-cine-surface/40 border border-white/5 rounded-2xl hover:border-cine-gold/20 transition-all group">
+              <span class="text-cine-gold font-bold tracking-tighter">${event.year}</span>
+              <h3 class="text-white font-serif text-2xl mt-1">${event.title}</h3>
+              <p class="text-cine-dim text-sm mt-4 leading-relaxed">${event.desc}</p>
+            </div>
+          </div>`;
+        tlRender.appendChild(div);
+      });
+
+      // GALLERY
+      const galRender = document.getElementById('gallery-render');
+      data.gallery.forEach(src => {
+        const d = document.createElement('div');
+        d.className = "h-72 overflow-hidden rounded-xl cursor-pointer group relative";
+        d.onclick = () => openLightbox(src);
+        d.innerHTML = `<img src="${src}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">`;
+        galRender.appendChild(d);
+      });
+
+      // QUIZ
+      let curQ = 0;
+      const qTitle = document.getElementById('quiz-question');
+      const qOpts = document.getElementById('quiz-options');
+      const qFeed = document.getElementById('quiz-feedback');
+      function loadQuiz() {
+        if(curQ >= data.quiz.length) { 
+          qTitle.innerText = "Fim do Quiz! ❤️"; 
+          qOpts.innerHTML = ""; 
+          return; 
+        }
+        const q = data.quiz[curQ];
+        qTitle.innerText = q.q;
+        qOpts.innerHTML = "";
+        q.options.forEach((o, i) => {
+          const b = document.createElement('button');
+          b.className = "w-full text-left p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-cine-gold hover:text-black transition text-sm";
+          b.innerText = o;
+          b.onclick = () => {
+            if(i === q.answer) { qFeed.innerText = "Correto!"; curQ++; setTimeout(loadQuiz, 1000); }
+            else { qFeed.innerText = "Tente novamente..."; }
+          };
+          qOpts.appendChild(b);
+        });
+      }
+      loadQuiz();
+
+      // QR CODE
+      new QRCode(document.getElementById("qrcode"), { text: window.location.href, width: 90, height: 90 });
+
+      // REVEAL & LOADER
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+      setTimeout(() => { document.getElementById('loader').style.opacity = '0'; setTimeout(()=>document.getElementById('loader').style.display='none', 500); }, 1500);
+    });
+
+    // LIGHTBOX FUNCTIONS
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    function openLightbox(src) {
+      lbImg.src = src;
+      lb.classList.replace('hidden', 'flex');
+      setTimeout(() => { lb.classList.remove('opacity-0'); lbImg.classList.replace('scale-90', 'scale-100'); }, 10);
+    }
+    function closeLightbox() {
+      lb.classList.add('opacity-0');
+      lbImg.classList.replace('scale-100', 'scale-90');
+      setTimeout(() => { lb.classList.replace('flex', 'hidden'); }, 500);
+    }
+  </script>
+</body>
+</html>
