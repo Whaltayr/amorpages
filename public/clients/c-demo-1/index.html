@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Moonlight — Amor Noturno</title>
+  <title>Rosa Romântico — AmorPages</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -16,17 +16,21 @@
       theme: {
         extend: {
           colors: {
-            moon: {
-              base: '#0F172A',   // Azul meia-noite
-              light: '#1E293B',  // Azul suave
-              silver: '#E5E7EB', // Prata claro
-              ice: '#F8FAFC',    // Branco gelo
-              accent: '#A78BFA', // Lavanda
+            brand: {
+              // Paleta Coolors: Romântica & Vibrante
+              grad1: '#C9184A', // Deep Pink
+              grad2: '#FF4D6D', // Bright Pink
+              cta1: '#FF758F',  // Salmon Pink
+              cta2: '#FFB3C1',  // Soft Pink
+              dark: '#590D22',  // Claret (Texto escuro)
+              cream: '#FFF0F3', // Lavender Blush (Fundo principal - substitui o branco)
+              brown: '#800F2F', // Wine
+              soft: '#A4133C',  // Muted Magenta
             }
           },
           fontFamily: {
-            serif: ['Playfair Display', 'serif'],
-            sans: ['Inter', 'sans-serif'],
+            montserrat: ['Montserrat', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
           }
         }
       }
@@ -34,94 +38,183 @@
   </script>
 
   <style>
-    .bg-stars {
-      background-color: #0F172A;
-      background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px), 
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px);
-      background-size: 550px 550px, 350px 350px;
-    }
-
-    .moon-halo { box-shadow: 0 0 40px -10px rgba(167, 139, 250, 0.5); }
-    .photo-card { transition: all 0.4s ease; }
-    .photo-card:hover { transform: translateY(-5px); filter: brightness(1.1); }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    
+    .photo-hover { transition: all 0.3s ease; }
+    .photo-hover:hover { transform: scale(1.02); filter: brightness(0.9); cursor: zoom-in; }
+    
+    /* Custom Scrollbar Rosa */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FFF0F3; }
+    ::-webkit-scrollbar-thumb { background: #FF758F; border-radius: 10px; }
   </style>
 </head>
-<body class="antialiased bg-moon-base text-moon-silver font-sans bg-stars">
 
-  <main id="page">
-    <section class="min-h-screen flex items-center justify-center px-6 py-20 relative overflow-hidden">
-      <div class="max-w-3xl w-full text-center relative z-10">
-        
-        <div class="relative inline-block mb-10">
-          <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-moon-silver/20 moon-halo mx-auto">
-            <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=800" alt="Casal" class="w-full h-full object-cover">
-          </div>
-          <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-moon-light border border-moon-silver/10 px-6 py-2 rounded-full text-xs uppercase tracking-widest text-moon-accent shadow-lg whitespace-nowrap">
-            2.417 noites juntos
-          </div>
+<body class="antialiased bg-brand-cream text-brand-dark font-inter selection:bg-brand-grad2 selection:text-white">
+
+  <section class="min-h-screen flex flex-col items-center justify-center relative px-4 py-12 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-cta2/30 to-transparent pointer-events-none"></div>
+
+    <div class="relative z-10 text-center max-w-3xl w-full animate-float">
+      
+      <div class="relative inline-block mb-10 group">
+        <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-[6px] border-white shadow-[0_0_30px_rgba(255,77,109,0.3)] mx-auto transform transition-transform duration-500 hover:rotate-2">
+          <img src="./assets/hero.webp" alt="Casal" class="w-full h-full object-cover">
         </div>
+        
+        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full text-sm font-bold shadow-lg bg-gradient-to-r from-brand-grad1 to-brand-grad2 text-white whitespace-nowrap z-20">
+          1.250 dias de puro amor
+        </div>
+      </div>
 
-        <h1 class="font-serif text-4xl md:text-6xl text-moon-ice mb-4 leading-tight">
-          Ana <span class="text-moon-accent text-3xl italic mx-2">&</span> Pedro
-        </h1>
+      <h1 class="font-montserrat font-bold text-brand-brown text-5xl md:text-7xl tracking-tight leading-tight mb-6">
+        Ana <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-grad1 to-brand-grad2">&</span> João
+      </h1>
 
-        <p class="text-moon-silver/60 text-sm md:text-base font-light tracking-wide max-w-lg mx-auto mb-10">
-          Sob a mesma lua, escrevendo a nossa história eterna.
+      <div class="w-24 h-0.5 bg-gradient-to-r from-brand-grad1 to-brand-grad2 mx-auto mb-6"></div>
+
+      <p class="text-brand-soft text-lg md:text-xl font-light">
+        Nossa jornada eterna começou em <br class="md:hidden">
+        <span class="font-semibold text-brand-brown underline decoration-brand-cta1/40">14 Fevereiro 2020</span>
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://wa.me/244932783626?text=Olá%20!%20Quero%20encomendar%20o%20Vintage" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full shadow-lg shadow-brand-grad1/20 bg-gradient-to-r from-brand-grad1 to-brand-grad2 text-white font-semibold hover:opacity-90 transition-opacity transform active:scale-95">
+          Surpresa especial
+        </a>
+
+        <a href="#message" class="w-full sm:w-auto px-6 py-3.5 border border-brand-soft/20 text-brand-soft rounded-full font-medium hover:bg-brand-grad1/5 transition-colors text-center backdrop-blur-sm">
+          Ler nossa história
+        </a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 animate-bounce text-brand-grad2/40">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section id="message" class="py-24 px-6 bg-[#FFE5EC]">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="text-brand-grad1 text-5xl block mb-4 font-serif">♥</span>
+      <h2 class="font-montserrat text-3xl md:text-4xl text-brand-brown font-bold mb-8 italic">Mensagem Especial</h2>
+
+      <blockquote class="text-xl md:text-3xl text-brand-dark/90 leading-relaxed italic font-light">
+        "Cada dia contigo é um capítulo que eu guardo no peito — obrigado por seres a minha calma e a minha festa."
+      </blockquote>
+
+      <div class="mt-10 inline-block px-4 py-1 border-b border-brand-grad1 text-brand-grad1 font-semibold tracking-widest uppercase text-xs">
+        De João para Ana
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 md:px-8 bg-brand-cream">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-montserrat text-2xl md:text-3xl text-brand-brown font-bold uppercase tracking-tighter">Nossos Momentos</h2>
+        <div class="w-16 h-1 bg-brand-grad2 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="photo-hover rounded-3xl overflow-hidden shadow-xl aspect-[4/5] bg-brand-cta2 cursor-pointer border-4 border-white" onclick="openLightbox('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800')">
+          <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800" class="w-full h-full object-cover">
+        </div>
+               <div class="photo-hover rounded-3xl overflow-hidden shadow-xl aspect-[4/5] bg-brand-cta2 cursor-pointer border-4 border-white" onclick="openLightbox('https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=393&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+          <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=393&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-hover rounded-3xl overflow-hidden shadow-xl aspect-[4/5] bg-brand-cta2 cursor-pointer border-4 border-white" onclick="openLightbox('https://images.unsplash.com/photo-1535295972055-1c762f4483e5?q=80&w=800')">
+          <img src="https://images.unsplash.com/photo-1535295972055-1c762f4483e5?q=80&w=800" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-hover rounded-3xl overflow-hidden shadow-xl aspect-[4/5] bg-brand-cta2 cursor-pointer border-4 border-white" onclick="openLightbox('https://images.unsplash.com/photo-1527628173875-3c7bfd28ad78?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+          <img src="https://images.unsplash.com/photo-1527628173875-3c7bfd28ad78?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-4 bg-gradient-to-br from-brand-grad1 to-brand-soft text-white">
+    <div class="max-w-lg mx-auto text-center">
+      <h2 class="text-2xl font-montserrat font-bold mb-6 flex items-center justify-center gap-3">
+        <span class="text-3xl">♫</span>
+        Trilha Sonora do Coração
+      </h2>
+      <div class="bg-white/20 backdrop-blur-xl rounded-3xl p-4 shadow-2xl border border-white/30">
+      <iframe id="spotify" data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/51eUS5Tzc3zpAftVvCnvBg?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-6 bg-[#FFB3C1]/20">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="font-montserrat text-3xl font-bold text-brand-brown italic">Nossa Carta</h2>
+        <div class="w-16 h-0.5 bg-brand-grad2 mx-auto mt-4"></div>
+      </div>
+
+      <div class="bg-brand-cream rounded-[2.5rem] p-8 md:p-14 border border-brand-grad1/10 shadow-2xl relative overflow-hidden">
+        <div class="absolute -top-6 -right-6 text-[10rem] text-brand-grad1/5 font-serif leading-none select-none italic">♥</div>
+
+        <p class="text-brand-dark font-montserrat font-bold text-xl mb-6 italic">Meu eterno amor,</p>
+
+        <p class="text-brand-dark/80 leading-relaxed whitespace-pre-line text-lg font-light">
+          Cada dia contigo revela um pequeno milagre. Obrigado por partilhares a vida comigo. 
+          
+          Que venham mais conversas no sofá, viagens inesperadas e cafés às sete. Prometo estar lá em cada nascer do sol, amando você um pouco mais que ontem.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#" class="w-full sm:w-auto px-8 py-3 rounded-full bg-moon-accent text-white font-medium shadow-[0_0_20px_rgba(167,139,250,0.4)]">
-            Encomendar
-          </a>
-          <a href="#message" class="w-full sm:w-auto px-8 py-3 rounded-full border border-moon-silver/20 text-moon-silver">
-            Ler carta
-          </a>
+        <div class="mt-12 text-right border-t border-brand-grad1/10 pt-8">
+          <p class="text-brand-soft text-sm font-semibold mb-1 italic">Com todo meu carinho,</p>
+          <p class="font-montserrat text-3xl text-brand-brown font-bold">João</p>
+          <p class="text-brand-soft/50 text-[10px] mt-2 uppercase tracking-[0.3em]">Desde 14.02.2020</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="message" class="py-24 px-6 bg-gradient-to-b from-moon-base to-moon-light/50">
-      <div class="max-w-2xl mx-auto text-center">
-        <div class="text-moon-accent text-2xl mb-4">✦</div>
-        <h2 class="font-serif text-2xl md:text-3xl text-moon-ice mb-8">Mensagem Especial</h2>
-        <blockquote class="text-lg md:text-2xl text-moon-silver/90 italic font-serif leading-relaxed px-4">
-          "Você é a minha paz no fim do dia e a minha certeza em todas as manhãs. Te amar é como olhar o céu: infinito e brilhante."
-        </blockquote>
-        <div class="mt-8 flex items-center justify-center gap-2 text-sm text-moon-accent uppercase tracking-widest">
-          <span class="w-8 h-px bg-moon-accent/50"></span>
-          De Pedro
-          <span class="w-8 h-px bg-moon-accent/50"></span>
-        </div>
-      </div>
-    </section>
+  <footer class="py-12 px-4 bg-brand-dark text-brand-cream text-center">
+    <div class="max-w-3xl mx-auto flex flex-col items-center gap-4">
+      <div class="text-2xl font-montserrat font-bold italic">Ana <span class="text-brand-cta1">&</span> João</div>
+      <div class="w-8 h-px bg-brand-cta1/30"></div>
+      <div class="text-[10px] text-brand-cta2/40 uppercase tracking-[0.5em]">Rosa Romântico Deluxe • 2026</div>
+    </div>
+  </footer>
 
-    <section class="py-20 px-6 bg-moon-light/30 border-y border-white/5">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="font-serif text-3xl text-moon-ice mb-12">Momentos</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600" class="aspect-[3/4] rounded-lg object-cover photo-card">
-          <img src="https://images.unsplash.com/photo-1621112904887-419379ce6824?q=80&w=600" class="aspect-[3/4] rounded-lg object-cover photo-card md:mt-8">
-          <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600" class="aspect-[3/4] rounded-lg object-cover photo-card">
-          <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=600" class="aspect-[3/4] rounded-lg object-cover photo-card md:mt-8">
-        </div>
-      </div>
-    </section>
+  <div id="lightbox" class="fixed inset-0 bg-brand-dark/95 z-50 hidden items-center justify-center p-4 backdrop-blur-md transition-opacity duration-300 opacity-0" onclick="closeLightbox()">
+    <button class="absolute top-6 right-6 text-brand-cream/70 hover:text-white p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="Zoom" class="max-w-full max-h-[90vh] rounded-3xl shadow-2xl transform scale-95 transition-transform duration-300 border-4 border-white/10">
+  </div>
 
-    <section class="py-16 px-6">
-      <div class="max-w-lg mx-auto">
-        <div class="bg-moon-light rounded-2xl p-6 border border-white/5 shadow-2xl text-center">
-          <h3 class="font-serif text-xl text-moon-ice mb-4">Nossa Trilha Sonora</h3>
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4rv8D6vKj5mY1vO7Jk6c2r?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-        </div>
-      </div>
-    </section>
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
 
-    <footer class="py-10 text-center border-t border-white/5 bg-moon-base">
-      <p class="font-serif text-moon-ice text-lg">Ana & Pedro</p>
-      <p class="text-xs text-moon-silver/30 mt-2">AmorPages • Moonlight Theme</p>
-    </footer>
-  </main>
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.remove('hidden');
+      setTimeout(() => {
+        lightbox.classList.remove('opacity-0');
+        lightbox.classList.add('flex');
+        lightboxImg.classList.replace('scale-95', 'scale-100');
+      }, 10);
+    }
 
+    function closeLightbox() {
+      lightbox.classList.add('opacity-0');
+      lightboxImg.classList.replace('scale-100', 'scale-95');
+      setTimeout(() => {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+        lightboxImg.src = '';
+      }, 300);
+    }
+    
+    document.addEventListener('keydown', (e) => { if(e.key === "Escape") closeLightbox(); });
+  </script>
 </body>
 </html>
